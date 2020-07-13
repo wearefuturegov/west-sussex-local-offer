@@ -1,0 +1,27 @@
+@import "vars";
+
+.site-footer{
+    padding: 25px;
+    font-size: 0.9rem;
+    img{
+        max-width: 130px;
+        margin-bottom: 10px;
+    }
+}
+
+.site-footer__menu{
+    ul{
+        padding-left: 0px;
+        list-style: none;
+    }
+    li{
+        display: inline-block;
+        margin-right: 10px;
+    }
+    a{
+        color: $blue;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}

@@ -2,8 +2,31 @@
 
 <?php if(have_posts()): while(have_posts()): the_post(); ?>
 
-    <h1><?php the_title(); ?></h1>
-    <?php the_content(); ?>
+<div class="content-wrapper">
+    <div class="container">
+
+
+    
+        <?php the_breadcrumbs(); ?>
+
+
+        <h1 class="page-title"><?php the_title(); ?></h1>
+
+        <div class="layout-sidebar-right">
+            <article class="layout-sidebar-right__main-content">
+                <?php the_content(); ?>
+                <small>Last updated <?php the_date(" j F Y")  ?></small>
+            </article>
+            <div class="layout-sidebar-right__sidebar">
+                <?php if ( is_page() && $post->post_parent ) { ?>
+                    <h2>Pages in this section</h2>
+                    <p>Child pages here</p>
+                <?php } ?>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 <?php endwhile; endif; ?>
 

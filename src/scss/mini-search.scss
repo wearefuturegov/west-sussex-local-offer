@@ -1,0 +1,41 @@
+@import "_vars";
+
+.mini-search{
+    display: flex;
+    flex-direction: row;
+}
+
+.mini-search__input{
+    font-size: 1rem;
+    padding: 7px;
+    background: $pale;
+    border-radius: 5px 0px 0px 5px;
+    border: 1px solid $grey1;
+    height: 40px;
+    &:placeholder{
+        color: $grey1;
+    }
+    &:focus{
+        border-color: $blue;
+    }
+}
+
+.mini-search__button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    padding: 5px 15px;
+    background: $blue;
+    border-radius: 0px 5px 5px 0px;
+    border: none;
+    height: 40px;
+    cursor: pointer;
+    &:hover{
+        background: darken($blue, 10);
+    }
+    &:placeholder{
+        color: $grey1;
+    }
+}
