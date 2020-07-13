@@ -8,6 +8,8 @@
 
 body{
     margin: 0;
+    line-height: 1.5;
+    background: $pale;
 }
 
 .container{
@@ -28,6 +30,10 @@ body{
 
 @import "header";
 @import "mini-search";
-@import "footer";
-@import "page";
+@import "announcement";
+
 @import "breadcrumbs";
+@import "page";
+@import "sidebar";
+
+@import "footer";

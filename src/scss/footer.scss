@@ -1,7 +1,8 @@
 @import "vars";
 
 .site-footer{
-    padding: 25px;
+    background: $pale;
+    padding: 35px 25px;
     font-size: 0.9rem;
     img{
         max-width: 130px;
@@ -13,6 +14,7 @@
     ul{
         padding-left: 0px;
         list-style: none;
+        margin-bottom: 0px;
     }
     li{
         display: inline-block;

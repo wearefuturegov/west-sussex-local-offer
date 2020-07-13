@@ -1,7 +1,9 @@
 @import "_vars";
 
 .site-header{
+    background: white;
     padding: 25px;
+    position: relative;
 }
 
 .site-header__inner{
@@ -25,29 +27,83 @@
 }
 
 .site-header__actions{
-    display: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .mini-search{
+        display: none;
+        @media screen and (min-width: 1200px){
+            display: flex;
+        }
+    }
+}
+
+.site-header__menu-toggle{
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover{
+        text-decoration: underline;
+    }
     @media screen and (min-width: 1200px){
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+        display: none;
     }
 }
 
 .site-header__menu{
-    display: block;
-    ul{
-        padding-left: 0px;
-        list-style: none;
+    display: none;
+
+    @media screen and (max-width: 1200px){
+        &.active{
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            width: 100%;
+            z-index: 1;
+            background: $dark;
+            ul{
+                padding-left: 0px;
+                list-style: none;
+            }
+            li{
+                padding: 10px 25px;
+                display: block;
+                margin-right: 15px;
+                font-size: 1.1rem;
+                font-weight: bold;
+
+                a{
+                    color: white;
+                    text-decoration: none;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
     }
-    li{
-        display: inline-block;
-        margin-right: 15px;
-        font-size: 1.1rem;
-        font-weight: bold;
-        a{
-            text-decoration: none;
-            &:hover{
-                text-decoration: underline;
+
+    @media screen and (min-width: 1200px){
+        display: block;
+        ul{
+            padding-left: 0px;
+            list-style: none;
+        }
+        li{
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            a{
+                text-decoration: none;
+                &:hover{
+                    text-decoration: underline;
+                }
             }
         }
     }

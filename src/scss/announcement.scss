@@ -1,0 +1,21 @@
+@import "_vars";
+
+.announcement{
+    padding: 35px 25px;
+    background: $lightGreen;
+    color: $darkGreen;
+    font-size: 1.2rem;
+
+    h2{
+        display: inline-block;
+        font-size: 1.15rem;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    a{
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}

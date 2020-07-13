@@ -16,6 +16,9 @@
             </a>
 
             <div class="site-header__actions">
+                
+                <button class="site-header__menu-toggle" aria-expanded="false">Menu</button>
+
                 <nav class="site-header__menu">
                     <?php 
                         wp_nav_menu( array( 
@@ -28,3 +31,5 @@
             </div>
         </div>
     </header>
+
+    <?php get_template_part("announcement"); ?>

@@ -1,0 +1,13 @@
+@import "_vars";
+
+.child-page-list{
+    list-style: none;
+    padding-left: 0px;
+    font-size: 1.1rem;
+    li{
+        margin-bottom: 5px;
+        &:last-of-type{
+            margin-bottom: 0px;
+        }
+    }
+}

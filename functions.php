@@ -1,5 +1,7 @@
 <?php
 
+require "inc/customizer.php";
+
 function lo_load_scripts_and_styles() {
     wp_enqueue_style("index", get_stylesheet_directory_uri()."/dist/css/index.css");
     wp_enqueue_style("fonts", "https://fonts.googleapis.com/css?family=Lato:400,500,600,700");
@@ -35,5 +37,20 @@ function the_breadcrumbs(){
         foreach ($breadcrumbs as $crumb) echo $crumb;
         echo "<li class='breadcrumbs__crumb'>" . get_the_title() . "</li>";
         echo "</ol>";
+    }
+}
+
+function the_kids(){
+    global $post;
+    $children = get_children(array(
+        'post_parent' => $post->ID,
+        'post_type'   => 'page',
+        'post_status' => 'publish'
+    ));
+    if($children){
+        echo "<h2>Pages in this section</h2>";
+        echo "<ul class='child-page-list'>";
+        foreach ($children as $child) echo "<li><a href='" . get_the_permalink($child) . "'>" . get_the_title($child) . "</a></li>";
+        echo "</ul>";
     }
 }
