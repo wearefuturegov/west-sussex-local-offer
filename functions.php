@@ -19,22 +19,17 @@ add_action( "init", "lo_register_menus" );
 
 add_theme_support( 'custom-logo' );
 
-
 function the_breadcrumbs(){
-    if(is_page() && !$post->post_parent){
-
+    global $post;
+    if(is_page()){
         $parent_id = $post->post_parent;
         $breadcrumbs = array();
         while ($parent_id) {
             $page = get_page($parent_id);
-            $breadcrumbs[] = "<a href='" . get_permalink($page->ID) . "'>" . get_the_title($page->ID) . "</a>";
+            $breadcrumbs[] = "<li class='breadcrumbs__crumb'><a href='" . get_permalink($page->ID) . "'>" . get_the_title($page->ID) . "</a></li>";
             $parent_id = $page->post_parent;
         }
         $breadcrumbs = array_reverse($breadcrumbs);
-
-        print_r($breadcrumbs);
-
-
         echo "<ol class='breadcrumbs'>";
         echo "<li class='breadcrumbs__crumb'><a href='" . get_option("home") . "'>Home</a></li>";
         foreach ($breadcrumbs as $crumb) echo $crumb;
@@ -42,53 +37,3 @@ function the_breadcrumbs(){
         echo "</ol>";
     }
 }
-
-
-// function the_breadcrumbs() {
-
-//     if ( !is_home() && !is_front_page() || is_paged() ) {
-
-//         echo "<div class='breadcrumbs'>";
-
-//         echo "<a href='";
-//         echo get_option("home");
-//         echo "'>";
-//         echo "Home";
-//         echo '</a>';
-
-//         global $post;
-        
-//         if (is_category() || is_single()) {
-//             if (is_single()) {
-//                 echo $currentBefore;
-//                 the_title();
-//                 echo $currentAfter;
-//             }
-//         }
-        
-//         if ( is_page() && !$post->post_parent ) {
-//             echo $currentBefore;
-//             the_title();
-//             echo $currentAfter; 
-//         }
-
-//     elseif ( is_page() && $post->post_parent ) {
-//         $parent_id = $post->post_parent;
-//         $breadcrumbs = array();
-
-//         while ($parent_id) {
-//             $page = get_page($parent_id);
-//             $breadcrumbs[] = "<a href='" . get_permalink($page->ID) . "'>" . get_the_title($page->ID) . "</a>";
-//             $parent_id = $page->post_parent;
-//         }
-
-//         $breadcrumbs = array_reverse($breadcrumbs);
-//         foreach ($breadcrumbs as $crumb) echo $crumb;
-//         echo $currentBefore;
-//         the_title();
-//         echo $currentAfter;
-//     }
-
-//         echo "</div>";
-//     }
-// }
