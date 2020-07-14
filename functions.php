@@ -35,11 +35,6 @@ add_action( 'widgets_init', 'lo_widgets_init' );
 add_theme_support( 'custom-logo' );
 add_theme_support( 'post-thumbnails' ); 
 
-function lo_add_taxonomies_to_pages() {
-    register_taxonomy_for_object_type( 'category', 'page' );
-}
-add_action( 'init', 'lo_add_taxonomies_to_pages' );
-
 function the_breadcrumbs(){
     global $post;
     if(is_page()){
@@ -72,4 +67,27 @@ function the_kids(){
         foreach ($children as $child) echo "<li><a href='" . get_the_permalink($child) . "'>" . get_the_title($child) . "</a></li>";
         echo "</ul>";
     }
+}
+
+
+function the_tree_menu(){
+    global $post;
+
+    function the_kids(){
+        global $post;
+        $children = get_children(array(
+            'post_parent' => $post->ID,
+            'post_type'   => 'page',
+            'post_status' => 'publish'
+        ));
+        if($children){
+            echo "<h2>Pages in this section</h2>";
+            echo "<ul class='child-page-list'>";
+            foreach ($children as $child) echo "<li><a href='" . get_the_permalink($child) . "'>" . get_the_title($child) . "</a></li>";
+            echo "</ul>";
+        }
+    }
+
+
+
 }

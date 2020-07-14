@@ -17,7 +17,7 @@
         margin-bottom: 10px;
         @media screen and (min-width: 700px){
             max-width: 66.67%;
-            font-size: 3.5rem;
+            font-size: 4rem;
         }
     }
     .masthead__lede{
@@ -146,6 +146,9 @@
         p{
             margin-top: 0px;
             margin-bottom: 0px;
+            @media screen and (min-width: 700px){
+                font-size: 1.1rem;
+            }
         }
 
         a{
