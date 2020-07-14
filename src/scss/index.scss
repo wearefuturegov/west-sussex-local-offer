@@ -13,7 +13,7 @@ body{
 }
 
 .container{
-    max-width: 1300px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -35,5 +35,8 @@ body{
 @import "breadcrumbs";
 @import "page";
 @import "sidebar";
+
+@import "buttons";
+@import "home";
 
 @import "footer";

@@ -23,7 +23,10 @@
         width: 120px;
         margin-right: 10px;
     }
-
+    &:focus{
+        background: $focus;
+        outline: 3px solid $focus;
+    }
 }
 
 .site-header__actions{
@@ -103,6 +106,10 @@
                 text-decoration: none;
                 &:hover{
                     text-decoration: underline;
+                }
+                &:focus{
+                    background: $focus;
+                    outline: 3px solid $focus;
                 }
             }
         }

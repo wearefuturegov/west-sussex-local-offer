@@ -14,6 +14,13 @@
 
             <div class="layout-sidebar-right__sidebar">
                 <?php the_kids(); ?>
+
+                <?php if ( is_active_sidebar( "page_sidebar" ) ) : ?>
+                    <aside class="widget-area" role="complementary">
+                        <?php dynamic_sidebar( "page_sidebar" ); ?>
+                    </aside>
+                <?php endif; ?>
+
             </div>
 
         </div>

@@ -17,5 +17,9 @@
         &:hover{
             text-decoration: none;
         }
+        &:focus{
+            background: $focus;
+            outline: 3px solid $focus;
+        }
     }
 }

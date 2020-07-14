@@ -1,5 +1,6 @@
 <?php
 
+require "inc/blocks.php";
 require "inc/customizer.php";
 
 function lo_load_scripts_and_styles() {
@@ -19,7 +20,24 @@ function lo_register_menus() {
 }
 add_action( "init", "lo_register_menus" );
 
+function lo_widgets_init() {
+	register_sidebar( array(
+		'name'          => 'Page sidebar',
+		'id'            => 'page_sidebar',
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2>',
+		'after_title'   => '</h2>',
+	));
+}
+add_action( 'widgets_init', 'lo_widgets_init' );
+
 add_theme_support( 'custom-logo' );
+
+function lo_add_taxonomies_to_pages() {
+    register_taxonomy_for_object_type( 'category', 'page' );
+}
+add_action( 'init', 'lo_add_taxonomies_to_pages' );
 
 function the_breadcrumbs(){
     global $post;

@@ -25,5 +25,13 @@
         &:hover{
             text-decoration: none;
         }
+        &:focus{
+            color: $dark;
+            background: $focus;
+            outline: 3px solid $focus;
+        }
+        &:active{
+            color: $dark;
+        }
     }
 }

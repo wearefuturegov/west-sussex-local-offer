@@ -1,0 +1,252 @@
+@import "_vars";
+
+.home{
+
+    .masthead{
+        background: white;
+        padding: 25px 25px 35px 25px;
+        @media screen and (min-width: 700px){
+            padding: 45px 25px;
+        }
+    }
+    .masthead__title{
+        margin-top: 0px;
+        font-size: 2.5rem;
+        line-height: 1.3;
+        margin-bottom: 10px;
+        @media screen and (min-width: 700px){
+            max-width: 66.67%;
+            font-size: 3.5rem;
+        }
+    }
+    .masthead__lede{
+        font-size: 1.1rem;
+        margin-bottom: 35px;
+        @media screen and (min-width: 700px){
+            max-width: 66.67%;
+            font-size: 1.3rem;
+        }
+    }
+
+    .search-box{
+        padding: 25px;
+        border: 1px solid $grey1;
+        border-radius: 5px;
+        @media screen and (min-width: 700px){
+            display: grid;
+            grid-template-columns: 2fr 2fr 1fr;
+            column-gap: 25px;
+            align-items: end;
+        }
+    }
+    .search-box__field{
+        margin-bottom: 20px;
+        @supports(display: grid){
+            @media screen and (min-width: 700px){
+                margin-bottom: 0px;
+            }
+        }
+
+        label{
+            display: block;
+            margin-bottom: 5px;
+            @media screen and (min-width: 700px){
+                font-size: 1.1rem;
+                margin-bottom: 7px;
+            }
+        }
+
+        input{
+            width: 100%;
+            font-size: 1rem;
+            padding: 7px;
+            background: $pale;
+            border-radius: 5px;
+            border: 1px solid $grey1;
+            &:placeholder{
+                color: $grey1;
+            }
+            &:focus{
+                outline: none;
+                box-shadow: 0px 0px 0px 3px $focus;
+            }
+            @media screen and (min-width: 700px){
+                font-size: 1.1rem;
+                padding: 10px;
+            }
+        }
+    }
+
+    .search-box__button{
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+        padding: 11px 15px;
+        background: $blue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover{
+            background: darken($blue, 10);
+        }
+        &:placeholder{
+            color: $grey1;
+        }
+        &:focus{
+            outline: none;
+            box-shadow: 0px 0px 0px 3px $focus;
+        }
+        @media screen and (min-width: 700px){
+            font-size: 1.1rem;
+        }
+    }
+
+    .trails{
+        padding: 45px 25px;
+    }
+
+    .trails__list{
+        list-style: none;
+        padding-left: 0px;
+        @media screen and (min-width: 500px){
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        @media screen and (min-width: 900px){
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 45px;
+        }
+    }
+
+    .trails__trail{
+        margin-bottom: 25px;
+        &:last-of-type{
+            margin-bottom: 0px;
+        }
+        @supports(display: grid){
+            @media screen and (min-width: 500px){
+                margin-bottom: 0px;
+            }
+        }
+
+        h3{
+            margin-top: 0px;
+            font-size: 1.2rem;
+            margin-bottom: 7px;
+            @media screen and (min-width: 500px){
+                font-size: 1.4rem;
+            }
+        }
+
+        p{
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        a{
+            color: $blue;
+            &:hover{
+                text-decoration: none;
+            }
+            &:focus{
+                color: $dark;
+                background: $focus;
+                outline: 3px solid $focus;
+            }
+            &:active{
+                color: $dark;
+            }
+        }
+    }
+
+
+    .campaign{
+        padding: 55px 25px;
+        background: $grey1;
+        background-image: url("http://placehold.it/1920x1080");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        @media screen and (min-width: 700px){
+            padding: 100px 25px;
+        }
+        h2{
+            color: white;
+            text-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+            @media screen and (min-width: 700px){
+                font-size: 2rem;
+                max-width: 50%;
+            }
+        }
+    }
+
+
+    .contact{
+        padding: 45px 25px;
+        background: white;
+        @media screen and (min-width: 700px){
+            padding: 55px 25px;
+        }
+    }
+
+    .contact__inner{
+        @media screen and (min-width: 700px){
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    .contact__panel{
+        margin-bottom: 45px;
+        &:last-of-type{
+            margin-bottom: 0px;
+        }
+        @media screen and (min-width: 700px){
+            margin-bottom: 0px;
+            flex: 1;
+            width: 50%;
+            &:last-of-type{
+                margin-left: 50px;
+                padding-left: 50px;
+                border-left: 1px solid $grey2;
+            }
+            p{
+                font-size: 1.1rem;
+            }
+        }
+
+        h2{
+            margin-top: 0px;
+            margin-bottom: 7px;
+            @media screen and (min-width: 500px){
+                font-size: 2rem;
+            }
+        }
+
+        p a{
+            display: inline-block;
+            color: $blue;
+            font-weight: bold;
+            & + a{
+                margin-left: 10px;
+            }
+            &:hover{
+                text-decoration: none;
+            }
+            &:focus{
+                color: $dark;
+                background: $focus;
+                outline: 3px solid $focus;
+            }
+            &:active{
+                color: $dark;
+            }
+        }
+    }
+
+}
