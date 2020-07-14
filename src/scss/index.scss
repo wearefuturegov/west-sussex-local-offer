@@ -8,8 +8,11 @@
 
 body{
     margin: 0;
-    line-height: 1.5;
     background: $pale;
+}
+
+p, li{
+    line-height: 1.5;
 }
 
 .container{

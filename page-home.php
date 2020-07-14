@@ -1,9 +1,15 @@
-<?php get_header(); ?>
+<?php 
+/* Template Name: Home */
+get_header(); ?>
+
+<?php if(have_posts()): while(have_posts()): the_post(); ?>
 
 <section class="masthead">
     <div class="container">
-        <h1 class="masthead__title">Helping you find local services, events and information</h1>
-        <p class="masthead__lede">The West Sussex Local Offer helps you find information about local services, support and events for children and young people aged 0 - 25 years who have special educational needs or disabilities (SEND). You can also find childcare via the West Sussex Family Information Services website.</p>
+        <h1 class="masthead__title"><?php the_title(); ?></h1>
+        <div class="masthead__lede">
+            <?php the_content(); ?>
+        </div>
     
         <form class="search-box" method="get" action="https://local-offer.org/search">
             <div class="search-box__field">
@@ -42,7 +48,7 @@
     </ul>
 </section>
 
-<section class="campaign">
+<section class="campaign" style="background-image: url('<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ?>')">
     <div class="container">
         <h2>New events are added all the time from support groups, workshops, drop-ins, learning, teaching and sharing of insights and experiences.</h2>
         <a class="button button--white" href="https://local-offer.org/search_events">View events</a>
@@ -68,5 +74,6 @@
     </div>
 </section>
 
+<?php endwhile; endif; ?>
 
 <?php get_footer(); ?>

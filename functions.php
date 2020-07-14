@@ -33,6 +33,7 @@ function lo_widgets_init() {
 add_action( 'widgets_init', 'lo_widgets_init' );
 
 add_theme_support( 'custom-logo' );
+add_theme_support( 'post-thumbnails' ); 
 
 function lo_add_taxonomies_to_pages() {
     register_taxonomy_for_object_type( 'category', 'page' );
