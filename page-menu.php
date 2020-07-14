@@ -1,5 +1,5 @@
 <?php 
-/* Template Name: Virtual */
+/* Template Name: Menu */
 ?>
 
 <?php get_header(); ?>
@@ -8,9 +8,9 @@
 
 <div class="content-wrapper">
     <div class="container">
-        <h1 class="page-title"><?php the_title(); ?></h1>
+        <h1 class="page-title">Browse</h1>
 
-        
+        <?php the_tree_menu(); ?>
 
     </div>
 </div>

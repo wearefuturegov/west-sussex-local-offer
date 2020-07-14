@@ -1,7 +1,9 @@
+// import initPinboard from "./pinboard"
+
 window.addEventListener("DOMContentLoaded", () => {
     initMobileMenu()
+    // initPinboard()
 })
-
 
 const initMobileMenu = () => {
     const toggle = document.querySelector(".site-header__menu-toggle")
@@ -21,3 +23,5 @@ const initMobileMenu = () => {
         })
     }
 }
+
+

@@ -1,7 +1,10 @@
 <?php
 
+// unset($_COOKIE['pins']);
+
 require "inc/blocks.php";
 require "inc/customizer.php";
+require "inc/pinboard.php";
 
 function lo_load_scripts_and_styles() {
     wp_enqueue_style("index", get_stylesheet_directory_uri()."/dist/css/index.css");
@@ -54,7 +57,7 @@ function the_breadcrumbs(){
     }
 }
 
-function the_kids(){
+function the_children(){
     global $post;
     $children = get_children(array(
         'post_parent' => $post->ID,
@@ -70,24 +73,51 @@ function the_kids(){
 }
 
 
-function the_tree_menu(){
-    global $post;
 
-    function the_kids(){
-        global $post;
-        $children = get_children(array(
-            'post_parent' => $post->ID,
-            'post_type'   => 'page',
-            'post_status' => 'publish'
-        ));
-        if($children){
-            echo "<h2>Pages in this section</h2>";
-            echo "<ul class='child-page-list'>";
-            foreach ($children as $child) echo "<li><a href='" . get_the_permalink($child) . "'>" . get_the_title($child) . "</a></li>";
-            echo "</ul>";
+
+
+
+
+function populate_tree_menu($post = null){
+
+    if(!$post) global $post;
+
+    $children = get_children(array(
+        'post_parent' => $post->ID,
+        'post_type'   => 'page',
+        'post_status' => 'publish',
+        'order'          => 'DESC'
+    ));
+
+    if($children){
+        echo "<ul class='tree-menu__list'>";
+        foreach ($children as $child){
+
+            $has_descendents = get_children(array(
+                'post_parent' => $child->ID,
+                'post_type'   => 'page',
+                'post_status' => 'publish',
+                'order'          => 'DESC'
+            ));
+
+            if($has_descendents){
+                echo "<li class='has-descendents'>";
+            } else {
+                echo "<li>";
+            }
+
+            echo "<a href='" . get_the_permalink($child) . "'>";
+            echo get_the_title($child);
+            echo "</a>";
+            echo "</li>";
+            populate_tree_menu($child);
         }
+        echo "</ul>";
     }
+}
 
-
-
+function the_tree_menu(){
+    echo "<nav class='tree-menu'>";
+    populate_tree_menu();
+    echo "</nav>";
 }
