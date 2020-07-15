@@ -19,7 +19,14 @@ function lo_handle_pinning() {
 
 
     echo setcookie(COOKIE_KEY, serialize($pins), time()+315360000, "/");
-    wp_redirect(get_permalink($_POST["id"]));
+
+    if($_SERVER['HTTP_REFERER']){
+        wp_redirect($_SERVER['HTTP_REFERER']);
+    } else {
+        wp_redirect(get_permalink($_POST["id"]));
+    }
+
+
 }
 add_action( "admin_post_nopriv_pinning", "lo_handle_pinning" );
 add_action( "admin_post_pinning", "lo_handle_pinning" );
