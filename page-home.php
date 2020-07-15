@@ -28,7 +28,18 @@ get_header(); ?>
 
 <section class="trails">
     <h2 class="visually-hidden">Popular topics</h2>
-    <ul class="container trails__list">
+
+
+        <?php 
+            wp_nav_menu( array( 
+                'container' => false,
+                'theme_location' => 'trails-menu',
+                'menu_class' => "container trails__list"
+            ));
+        ?>
+
+
+    <!-- <ul class="container trails__list">
         <li class="trails__trail">
             <h3><a href="#">Education, Health and Care Plans</a></h3>
             <p>Description of the link</p>
@@ -45,7 +56,9 @@ get_header(); ?>
             <h3><a href="#">Just received/waiting for diagnosis</a></h3>
             <p>Description of the link</p>
         </li>
-    </ul>
+    </ul> -->
+
+
 </section>
 
 <section class="campaign" style="background-image: url('<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ?>')">

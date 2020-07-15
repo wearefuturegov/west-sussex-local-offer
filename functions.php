@@ -17,7 +17,8 @@ function lo_register_menus() {
     register_nav_menus(
         array(
             "header-menu" => __( "Header area" ),
-            "footer-menu" => __( "Footer area" )
+            "footer-menu" => __( "Footer area" ),
+            "trails-menu" => __( "Home page trails" )
         )
     );
 }
@@ -127,3 +128,22 @@ function the_tree_menu(){
     populate_tree_menu();
     echo "</nav>";
 }
+
+
+
+
+
+
+
+function prefix_nav_description( $item_output, $item, $depth, $args ) {
+    if ( is_page_template( 'page-home.php' ) && !empty( $item->description ) ) {
+        $item_output = str_replace( 
+            '">' . $args->link_before . $item->title. "</a>",
+            '">' . $args->link_before . $item->title. "</a>" . '<p>' . $item->description . '</span>',
+            $item_output 
+        );
+    }
+ 
+    return $item_output;
+}
+add_filter( 'walker_nav_menu_start_el', 'prefix_nav_description', 10, 4 );
