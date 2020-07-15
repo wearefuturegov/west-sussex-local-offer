@@ -84,11 +84,6 @@ function the_children(){
 }
 
 
-
-
-
-
-
 function populate_tree_menu($post = null){
 
     if(!$post) global $post;

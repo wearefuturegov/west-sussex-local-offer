@@ -1,22 +1,17 @@
 @import "_vars";
 
-// .pinboard-button{
-//     display: inline-block;
-//     border: 3px solid $blue;
-//     background: none;
-//     color: $blue;
-//     font-weight: bold;
-//     padding: 10px 25px;
-//     border-radius: 5px;
-//     font-size: 1.2rem;
-//     text-decoration: none;
-//     cursor: pointer;
-//     &:hover{
-//         filter: darken($blue, 10)
-//     }
-//     &:focus{
-//         outline: none;
-//         background: none;
-//         box-shadow: 0px 0px 0px 3px $focus;
-//     }
-// }
+.pinboard-list{
+    list-style: none;
+    padding-left: 0px;
+}
+
+.pinboard-list__item{
+    margin-bottom: 25px;
+    border: 1px solid $grey1;
+    border-radius: 5px;
+    padding: 35px;
+
+    *:first-child{
+        margin-top: 0px;
+    }
+}

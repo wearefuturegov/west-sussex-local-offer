@@ -24,42 +24,26 @@ function lo_handle_pinning() {
 add_action( "admin_post_nopriv_pinning", "lo_handle_pinning" );
 add_action( "admin_post_pinning", "lo_handle_pinning" );
 
+
 function the_pin_button() {
     global $post;
     $pins = unserialize(stripslashes($_COOKIE[COOKIE_KEY]));
-
-    if(is_array($pins) && in_array($post->ID, $pins)){
-        echo "<button class='button'>Remove from pins</button>";
-    } else {
-        echo "<button class='button'>Add to pins</button>";
-    }
-}
-
-function the_pinboard(){
-    $pins = unserialize(stripslashes($_COOKIE[COOKIE_KEY]));
-    if($pins){
-
-        $query = new WP_Query(array(
-            "post_type" => "page",
-            "post__in" => $pins
-        ) );
-
-        echo "<ul>";
- 
-        while ( $query->have_posts() ) {
-            $query->the_post();
-            echo '<li>';
-            echo "<h2><a href='" . get_permalink() . "'>" . get_the_title() . "</a></h2>";
-            echo "<p>" . get_the_excerpt() . "</p>";
-            echo the_pin_button();
-            echo '</li>';
-        }
-
-        echo "</ul>";
-         
-        wp_reset_postdata();
-
-    } else {
-        echo "There's nothing on your pinboard yet";
-    }
+    ob_start();
+    ?>
+    <form class="widget" method="post" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>">
+        <h2>Save for later</h2>
+        <input type="hidden" name="action" value="pinning"/>    
+        <input type="hidden" name="id" value="<?php echo get_the_ID(); ?>"/>
+        <?php 
+            if(is_array($pins) && in_array($post->ID, $pins)){
+                echo "<button class='button'>Remove from pins</button>";
+            } else {
+                echo "<button class='button'>Add to pins</button>";
+            }
+        ?>
+    </form>
+    <?php 
+    $output = ob_get_contents();
+    ob_end_clean();
+    echo $output;
 }
