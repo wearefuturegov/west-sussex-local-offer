@@ -2,6 +2,8 @@
 
 get_header(); 
 
+print_r($_SESSION);
+
 ?>
 
 <?php if(have_posts()): while(have_posts()): the_post(); ?>
@@ -16,25 +18,23 @@ get_header();
                 <small>Last updated <?php the_date(" j F Y")  ?></small>
             </article>
 
-            <div class="layout-sidebar-right__sidebar">
-                <?php the_children(); ?>
-
-
+            <aside class="layout-sidebar-right__sidebar">
+                <div class="widget">
+                    <?php the_children(); ?>
+                </div>
 
                 <?php if ( is_active_sidebar( "page_sidebar" ) ) : ?>
-                    <aside class="widget-area" role="complementary">
-                        <?php dynamic_sidebar( "page_sidebar" ); ?>
-                    </aside>
+                    <?php dynamic_sidebar( "page_sidebar" ); ?>
                 <?php endif; ?>
 
-                <h2>Save for later</h2>
-                <form method="post" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>">
+                <form class="widget" method="post" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>">
+                    <h2>Save for later</h2>    
                     <input type="hidden" name="action" value="pinning"/>    
                     <input type="hidden" name="id" value="<?php echo get_the_ID(); ?>"/>
-                    <?php pin_button(); ?>
+                    <?php the_pin_button(); ?>
                 </form>
 
-            </div>
+            </aside>
 
         </div>
     </div>

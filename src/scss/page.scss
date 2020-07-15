@@ -65,6 +65,10 @@
 
 }
 
-.layout-sidebar-right__sidebar > *{
+.layout-sidebar-right__sidebar > .widget *:first-child{
     margin-top: 0px;
+}
+
+.widget{
+    margin-bottom: 35px;
 }

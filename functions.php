@@ -27,7 +27,7 @@ function lo_widgets_init() {
 	register_sidebar( array(
 		'name'          => 'Page sidebar',
 		'id'            => 'page_sidebar',
-		'before_widget' => '<div>',
+		'before_widget' => '<div class="widget">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h2>',
 		'after_title'   => '</h2>',
@@ -37,6 +37,17 @@ add_action( 'widgets_init', 'lo_widgets_init' );
 
 add_theme_support( 'custom-logo' );
 add_theme_support( 'post-thumbnails' ); 
+
+
+function lo_custom_excerpt_length( $length ) {
+    return 20;
+}
+add_filter( 'excerpt_length', 'lo_custom_excerpt_length', 999 );
+
+function lo_excerpt_more($more) {
+    return '...';
+}
+add_filter('excerpt_more', 'lo_excerpt_more');
 
 function the_breadcrumbs(){
     global $post;

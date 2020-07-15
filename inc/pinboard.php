@@ -13,30 +13,52 @@ function lo_handle_pinning() {
         $pins[] = $_POST["id"];
     }
 
+
+    session_start();
+    $_SESSION["flash_message"] = "My message here";
+
+
     echo setcookie(COOKIE_KEY, serialize($pins), time()+315360000, "/");
     wp_redirect(get_permalink($_POST["id"]));
 }
 add_action( "admin_post_nopriv_pinning", "lo_handle_pinning" );
 add_action( "admin_post_pinning", "lo_handle_pinning" );
 
-function pin_button() {
+function the_pin_button() {
     global $post;
     $pins = unserialize(stripslashes($_COOKIE[COOKIE_KEY]));
 
     if(is_array($pins) && in_array($post->ID, $pins)){
-        echo "<button>Remove from pins</button>";
+        echo "<button class='button'>Remove from pins</button>";
     } else {
-        echo "<button>Add to pins</button>";
+        echo "<button class='button'>Add to pins</button>";
     }
 }
 
 function the_pinboard(){
     $pins = unserialize(stripslashes($_COOKIE[COOKIE_KEY]));
     if($pins){
-        wp_list_pages(array(
-            "include" => $pins,
-            "title_li" => null
-        ));
+
+        $query = new WP_Query(array(
+            "post_type" => "page",
+            "post__in" => $pins
+        ) );
+
+        echo "<ul>";
+ 
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            echo '<li>';
+            echo "<h2><a href='" . get_permalink() . "'>" . get_the_title() . "</a></h2>";
+            echo "<p>" . get_the_excerpt() . "</p>";
+            echo the_pin_button();
+            echo '</li>';
+        }
+
+        echo "</ul>";
+         
+        wp_reset_postdata();
+
     } else {
         echo "There's nothing on your pinboard yet";
     }

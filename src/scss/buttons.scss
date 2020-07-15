@@ -11,8 +11,10 @@
     border-radius: 5px;
     font-size: 1.2rem;
     text-decoration: none;
+    cursor: pointer;
     &:hover{
-        filter: darken($blue, 10)
+        color: darken($blue, 10);
+        border-color:  darken($blue, 10);
     }
     &:focus{
         outline: none;
@@ -25,6 +27,8 @@
     border-color: white;
     color: white;
     &:hover{
+        color: white;
+        border-color:  white;
         filter: brightness(0.95)
     }
 }
