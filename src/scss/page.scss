@@ -137,7 +137,9 @@
 .child-tiles{
     list-style: none;
     padding-left: 0px;
+    margin-bottom: 40px;
     @media screen and (min-width: 700px){
+        margin-bottom: 45px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 25px;
