@@ -15,7 +15,7 @@ print_r($_SESSION);
         <div class="layout-sidebar-right">
             <article class="layout-sidebar-right__main-content">
                 <?php the_content(); ?>
-                <small>Last updated <?php the_date(" j F Y")  ?></small>
+                <p class="page-last-edited">Last updated <?php the_date(" j F Y")  ?></p>
             </article>
 
             <aside class="layout-sidebar-right__sidebar">

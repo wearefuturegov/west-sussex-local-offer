@@ -28,43 +28,19 @@ get_header(); ?>
 
 <section class="trails">
     <h2 class="visually-hidden">Popular topics</h2>
-
-
-        <?php 
-            wp_nav_menu( array( 
-                'container' => false,
-                'theme_location' => 'trails-menu',
-                'menu_class' => "container trails__list"
-            ));
-        ?>
-
-
-    <!-- <ul class="container trails__list">
-        <li class="trails__trail">
-            <h3><a href="#">Education, Health and Care Plans</a></h3>
-            <p>Description of the link</p>
-        </li>
-        <li class="trails__trail">
-            <h3><a href="#">Childcare and pre-school</a></h3>
-            <p>Description of the link</p>
-        </li>
-        <li class="trails__trail">
-            <h3><a href="#">Pathways to Adulthood</a></h3>
-            <p>Description of the link</p>
-        </li>
-        <li class="trails__trail">
-            <h3><a href="#">Just received/waiting for diagnosis</a></h3>
-            <p>Description of the link</p>
-        </li>
-    </ul> -->
-
-
+    <?php 
+        wp_nav_menu( array( 
+            'container' => false,
+            'theme_location' => 'trails-menu',
+            'menu_class' => "container trails__list"
+        ));
+    ?>
 </section>
 
-<section class="campaign" style="background-image: url('<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ?>')">
+<section class="campaign" style="background-image: url('<?php echo wp_get_attachment_url( get_option("campaign_image") ) ?>')">
     <div class="container">
-        <h2>New events are added all the time from support groups, workshops, drop-ins, learning, teaching and sharing of insights and experiences.</h2>
-        <a class="button button--white" href="https://local-offer.org/search_events">View events</a>
+        <h2><?php echo get_option("campaign_text"); ?></h2>
+        <a class="button button--white" href="<?php echo get_the_permalink(get_option("campaign_link")); ?>"><?php echo get_option("campaign_link_text"); ?></a>
     </div>
 </section>
 

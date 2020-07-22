@@ -1,8 +1,5 @@
 <?php
 
-// unset($_COOKIE['pins']);
-
-require "inc/blocks.php";
 require "inc/customizer.php";
 require "inc/pinboard.php";
 
@@ -128,12 +125,6 @@ function the_tree_menu(){
     populate_tree_menu();
     echo "</nav>";
 }
-
-
-
-
-
-
 
 function prefix_nav_description( $item_output, $item, $depth, $args ) {
     if ( is_page_template( 'page-home.php' ) && !empty( $item->description ) ) {
