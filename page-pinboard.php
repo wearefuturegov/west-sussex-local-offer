@@ -47,7 +47,10 @@ get_header(); ?>
                 <?php 
                 wp_reset_postdata();
             } else {
-                echo "<p>There's nothing on your pinboard yet</p>";
+                ?>
+                    <img class="empty-icon" src="<?php echo get_stylesheet_directory_uri() ?>/assets/empty.svg" alt="Empty"/>
+                    <p class="empty-message">There's nothing on your pinboard yet.<br/> Save pages here for quick access.</p>
+                <?php
             }
         ?>
 

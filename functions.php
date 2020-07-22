@@ -94,6 +94,7 @@ function populate_tree_menu($post = null){
     ));
 
     if($children){
+        echo "<div class='widget'>";
         echo "<ul class='tree-menu__list'>";
         foreach ($children as $child){
 
@@ -117,6 +118,7 @@ function populate_tree_menu($post = null){
             populate_tree_menu($child);
         }
         echo "</ul>";
+        echo "</div>";
     }
 }
 

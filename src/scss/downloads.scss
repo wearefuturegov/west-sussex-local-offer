@@ -1,0 +1,50 @@
+@import "_vars";
+
+.download-list{
+    list-style: none;
+    padding-left: 0px;
+}
+
+.download{
+    position: relative;
+    padding: 15px;
+    background: $pale;
+    margin-bottom: 15px;
+    padding-left: 85px;
+    background-image: url("data:image/svg+xml,%3Csvg width='36' height='49' viewBox='0 0 36 49' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.879 4.00543e-05C16.7735 4.00543e-05 15.879 0.89457 15.879 2.00004V33L3.41805 20.48C2.6368 19.6988 1.37115 19.6988 0.589947 20.48C-0.191253 21.2613 -0.191303 22.5269 0.589947 23.3081L16.4689 39.1911C16.5627 39.281 16.6643 39.363 16.7697 39.4411H16.8479L17.1096 39.5818H17.2307C17.3127 39.613 17.3986 39.6364 17.4885 39.6482C17.6174 39.6638 17.7502 39.6638 17.8791 39.6482C18.0119 39.6638 18.1447 39.6638 18.2775 39.6482C18.3635 39.6364 18.4494 39.613 18.5275 39.5818H18.6486L18.9103 39.4411H18.9885L19.2971 39.1911L35.1681 23.3081C35.9493 22.5269 35.9493 21.2612 35.1681 20.48C34.3868 19.6988 33.1212 19.6988 32.34 20.48L19.879 32.949V2.00004C19.879 1.46879 19.668 0.960939 19.293 0.585939C18.918 0.210939 18.4102 0 17.8789 0L17.879 4.00543e-05Z' fill='%23056BEA'/%3E%3Cpath d='M2 48.14H33.758C34.8635 48.14 35.758 47.2455 35.758 46.14C35.758 45.0345 34.8635 44.14 33.758 44.14H2C0.8945 44.14 0 45.0345 0 46.14C0 47.2455 0.89453 48.14 2 48.14V48.14Z' fill='%23056BEA'/%3E%3C/svg%3E%0A");
+    background-position: 30px center;
+    background-size: 30px;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+    &:last-of-type{
+        margin-bottom: 0px;
+    }
+    &:focus-within{
+        box-shadow: 0px 0px 0px 3px $focus;
+    }
+
+    a{
+        display: block;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        &:focus{
+            outline: none;
+            background: none;
+        }
+        &:after{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            content: "";
+        }
+    }
+
+
+    p{
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+}

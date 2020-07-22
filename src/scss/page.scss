@@ -68,6 +68,10 @@
         height: auto;
     }
 
+    .page-last-edited{
+        font-size: 1rem;
+    }
+
 }
 
 .layout-sidebar-right__sidebar > .widget *:first-child{
@@ -76,10 +80,4 @@
 
 .widget{
     margin-bottom: 35px;
-}
-
-.page-last-edited{
-    // opacity: 0.75;
-    font-size: 0.85rem;
-    font-style: italic;
 }
