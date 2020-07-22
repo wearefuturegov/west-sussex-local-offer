@@ -68,21 +68,28 @@ function the_breadcrumbs(){
 
 function the_children(){
     global $post;
-    $children = get_children(array(
-        'post_parent' => $post->ID,
-        'post_type'   => 'page',
-        'post_status' => 'publish'
+    $children = new WP_Query(array(
+        'post_type'      => 'page',
+        'post_status' => 'publish',
+        'posts_per_page' => -1,
+        'post_parent'    => $post->ID,
+        'order'          => 'ASC',
+        'orderby'        => 'menu_order'
     ));
-    if($children){
+    if ( $children->have_posts() ):
         echo "<div class='widget'>";
         echo "<h2>Pages in this section</h2>";
         echo "<ul class='child-page-list'>";
-        foreach ($children as $child) echo "<li><a href='" . get_the_permalink($child) . "'>" . get_the_title($child) . "</a></li>";
+        while ( $children->have_posts() ) : $children->the_post();
+            echo "<li>";
+            echo "<a href='" . get_the_permalink() . "'>" . get_the_title() . "</a>";
+            echo "</li>";
+        endwhile;
         echo "</ul>";
         echo "</div>";
-    }
+    endif; 
+    wp_reset_postdata();
 }
-
 
 function populate_tree_menu($post = null){
 

@@ -11,21 +11,24 @@ get_header();
         <h1 class="page-title"><?php the_title(); ?></h1>
 
         <?php 
-        $children = get_children(array(
-            'post_parent' => $post->ID,
-            'post_type'   => 'page',
-            'post_status' => 'publish'
+        $children = new WP_Query(array(
+            'post_type'      => 'page',
+            'post_status' => 'publish',
+            'posts_per_page' => -1,
+            'post_parent'    => $post->ID,
+            'order'          => 'ASC',
+            'orderby'        => 'menu_order'
         ));
-        if($children){
+        if ( $children->have_posts() ):
             echo "<ul class='child-tiles'>";
-            foreach ($children as $child):
+            while ( $children->have_posts() ) : $children->the_post();
                 echo "<li class='child-tile'>";
-                echo "<a href='" . get_the_permalink($child) . "'>" . get_the_title($child) . "</a>";
-                if(get_the_excerpt($child)){ echo "<p>" . get_the_excerpt($child) . "</p>"; };
+                echo "<a href='" . get_the_permalink() . "'>" . get_the_title() . "</a>";
+                the_excerpt();
                 echo "</li>";
-            endforeach;
+            endwhile;
             echo "</ul>";
-        }
+        endif; wp_reset_postdata();
         ?>
 
         <div class="layout-sidebar-right">
