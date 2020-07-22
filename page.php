@@ -1,10 +1,4 @@
-<?php 
-
-get_header(); 
-
-print_r($_SESSION);
-
-?>
+<?php get_header(); ?>
 
 <?php if(have_posts()): while(have_posts()): the_post(); ?>
 
@@ -22,25 +16,23 @@ print_r($_SESSION);
 
                 <?php the_children(); ?>
 
-                <div class="widget">
-                    <h2>Downloads</h2>
-                    <?php
-                        $downloads = get_field('downloads');
-                        if( $downloads ): ?>
+                <?php
+                    $downloads = get_field('downloads');
+                    if( $downloads ): ?>
+                        <div class="widget">
+                        <h2>Downloads</h2>
                         <ul class="download-list">
                             <?php foreach( $downloads as $download ): ?>
                                 <li class="download">
-                                    <a href="<?php echo $download->guid ?>"><?php echo $download->post_title ?></a>
-                                    <p><?php echo $download->post_content ?></p>
+                                    <a href="<?php echo $download->guid; ?>"><?php if($download->post_title){ echo $download->post_title; } else { echo $download->post_name; } ?></a>
+                                    <p><?php echo $download->post_content; ?></p>
                                     <small><?php echo date_format(date_create($download->post_date), "F Y"); ?></small>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
-                        <?php 
-                        wp_reset_postdata();
-                        endif; 
-                        ?>
-                </div>
+                    </div>
+                <?php wp_reset_postdata();
+                endif; ?>
 
                 <?php the_pin_button(); ?>
 

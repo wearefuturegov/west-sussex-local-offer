@@ -74,10 +74,12 @@ function the_children(){
         'post_status' => 'publish'
     ));
     if($children){
+        echo "<div class='widget'>";
         echo "<h2>Pages in this section</h2>";
         echo "<ul class='child-page-list'>";
         foreach ($children as $child) echo "<li><a href='" . get_the_permalink($child) . "'>" . get_the_title($child) . "</a></li>";
         echo "</ul>";
+        echo "</div>";
     }
 }
 
@@ -94,7 +96,6 @@ function populate_tree_menu($post = null){
     ));
 
     if($children){
-        echo "<div class='widget'>";
         echo "<ul class='tree-menu__list'>";
         foreach ($children as $child){
 
@@ -118,7 +119,6 @@ function populate_tree_menu($post = null){
             populate_tree_menu($child);
         }
         echo "</ul>";
-        echo "</div>";
     }
 }
 
