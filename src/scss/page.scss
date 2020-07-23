@@ -183,7 +183,7 @@
     }
 }
 
-.layout-sidebar-right__sidebar + .widget *:first-child{
+.layout-sidebar-right__sidebar > .widget *:first-child{
     margin-top: 0px;
 }
 
