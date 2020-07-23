@@ -2,6 +2,7 @@
 
 require "inc/customizer.php";
 require "inc/pinboard.php";
+require "inc/feedback.php";
 
 function lo_load_scripts_and_styles() {
     wp_enqueue_style("index", get_stylesheet_directory_uri()."/dist/css/index.css");

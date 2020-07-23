@@ -34,4 +34,6 @@
 
 <?php endwhile; endif; ?>
 
+<?php the_feedback_banner(); ?>
+
 <?php get_footer(); ?>
