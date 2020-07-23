@@ -12,7 +12,7 @@
         <div class="site-header__inner container">
             <a class="site-header__masthead" href="<?php echo get_home_url(); ?>">
                 <img src="<?php echo wp_get_attachment_image_url(get_theme_mod('custom_logo'), 'full'); ?>" alt="Local offer"/>
-                West Sussex
+                Tools for Schools
             </a>
 
             <div class="site-header__actions">
