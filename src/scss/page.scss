@@ -46,6 +46,7 @@
     }
 }
 
+// all user-supplied content lives in this container
 .content-area{
     margin-bottom: 35px;
     @supports(display: grid){
@@ -93,8 +94,65 @@
         font-size: 1rem;
     }
 
+    .wp-block-separator{
+        margin: 35px 0px;
+        &.is-style-default,
+        &.is-style-wide{
+            border: none;
+            border-bottom: 1px solid $grey1;
+        }
+    }
+
+    .wp-block-table{
+        margin: 35px 0px;
+        overflow-x: scroll;
+        table, th, td{
+            background: none;
+            border-collapse: collapse;
+            border: 1px solid transparentize($grey1, 0.5);
+        }
+
+        thead th, tfoot td{
+            background: $blue;
+            color: white;
+        }
+
+        tr:nth-of-type(odd){
+            background: $pale;
+        }
+
+        td, th{
+            padding: 12px;
+        }
+
+        figcaption{
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+    }
+
+    .wp-block-image,
+    .wp-block-embed{
+        margin: 35px 0px;
+
+        iframe{
+            max-width: 100%;
+        }
+
+        figcaption{
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+    }
+
+    .wp-block-quote{
+        margin: 35px 0px;
+        padding-left: 25px;
+        border-left: 5px solid $blue;
+    }
+
     .wp-block-buttons{
-        margin-bottom: 12px;
+        margin-bottom: 22px;
         @media screen and (min-width: 700px){
             margin-bottom: 17px;
         }
@@ -120,12 +178,12 @@
         }
     }
 
-    & > *{
+    & + *{
         margin-top: 0px !important;
     }
 }
 
-.layout-sidebar-right__sidebar > .widget *:first-child{
+.layout-sidebar-right__sidebar + .widget *:first-child{
     margin-top: 0px;
 }
 

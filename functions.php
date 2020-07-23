@@ -131,3 +131,12 @@ function trails_nav_add_descriptions( $item_output, $item, $depth, $args ) {
     return $item_output;
 }
 add_filter( 'walker_nav_menu_start_el', 'trails_nav_add_descriptions', 10, 4 );
+
+
+function colour_scheme(){
+    global $post;
+    if(get_field("colour_scheme")){
+        return "colour-scheme-" . get_field("colour_scheme");
+    }
+    return null;
+}

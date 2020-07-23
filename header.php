@@ -6,7 +6,7 @@
         <title><?php if(is_home()) echo get_bloginfo('name'); else echo get_the_title() . " | " . get_bloginfo('name'); ?></title>
         <?php wp_head(); ?>
     </head>
-    <body <?php body_class(); ?>>
+    <body <?php body_class(colour_scheme()); ?>>
 
     <header class="site-header">
         <div class="site-header__inner container">
