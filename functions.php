@@ -119,57 +119,15 @@ function the_downloads(){
     endif;
 }
 
-
-// function populate_tree_menu($post = null){
-//     if(!$post) global $post;
-//     $children = get_children(array(
-//         'post_parent' => $post->ID,
-//         'post_type'   => 'page',
-//         'post_status' => 'publish',
-//         'order'          => 'DESC'
-//     ));
-//     if($children){
-//         echo "<ul class='tree-menu__list'>";
-//         foreach ($children as $child){
-
-//             $has_descendents = get_children(array(
-//                 'post_parent' => $child->ID,
-//                 'post_type'   => 'page',
-//                 'post_status' => 'publish',
-//                 'order'          => 'DESC'
-//             ));
-
-//             if($has_descendents){
-//                 echo "<li class='has-descendents'>";
-//             } else {
-//                 echo "<li>";
-//             }
-
-//             echo "<a href='" . get_the_permalink($child) . "'>";
-//             echo get_the_title($child);
-//             echo "</a>";
-//             echo "</li>";
-//             populate_tree_menu($child);
-//         }
-//         echo "</ul>";
-//     }
-// }
-
-// function the_tree_menu(){
-//     echo "<nav class='tree-menu'>";
-//     populate_tree_menu();
-//     echo "</nav>";
-// }
-
-// function prefix_nav_description( $item_output, $item, $depth, $args ) {
-//     if ( is_page_template( 'page-home.php' ) && !empty( $item->description ) ) {
-//         $item_output = str_replace( 
-//             '">' . $args->link_before . $item->title. "</a>",
-//             '">' . $args->link_before . $item->title. "</a>" . '<p>' . $item->description . '</span>',
-//             $item_output 
-//         );
-//     }
+function trails_nav_add_descriptions( $item_output, $item, $depth, $args ) {
+    if ( is_page_template( 'page-home.php' ) && !empty( $item->description ) ) {
+        $item_output = str_replace( 
+            '">' . $args->link_before . $item->title. "</a>",
+            '">' . $args->link_before . $item->title. "</a>" . '<p>' . $item->description . '</span>',
+            $item_output 
+        );
+    }
  
-//     return $item_output;
-// }
-// add_filter( 'walker_nav_menu_start_el', 'prefix_nav_description', 10, 4 );
+    return $item_output;
+}
+add_filter( 'walker_nav_menu_start_el', 'trails_nav_add_descriptions', 10, 4 );
