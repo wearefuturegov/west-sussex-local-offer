@@ -13,14 +13,14 @@ get_header(); ?>
 
 <div class="content-wrapper">
     <div class="container">
-        <h1 class="page-title">
-            Your pinboard 
-            <?php if($pins) echo "<span class='page-title__count'>(" . sizeof($pins) . ")</span>" ?>
+        <?php if( $pins && $query->have_posts()){ ?>
 
-        </h1>
+            <h1 class="page-title">
+                Your pinboard 
+                <?php echo "<span class='page-title__count'>(" . $query->post_count . ")</span>" ?>
+            </h1>
 
-        <?php 
-            if($pins){ ?>
+
                 <ul class="pinboard-list">
                 <?php while ( $query->have_posts() ) { $query->the_post(); ?>
                     <li class="pinboard-list__item">
@@ -48,6 +48,7 @@ get_header(); ?>
                 wp_reset_postdata();
             } else {
                 ?>
+                    <h1 class="page-title">Your pinboard <span class='page-title__count'>(0)</span></h1>
                     <img class="empty-icon" src="<?php echo get_stylesheet_directory_uri() ?>/assets/empty.svg" alt="Empty"/>
                     <p class="empty-message">There's nothing on your pinboard yet.<br/> Save pages here for quick access.</p>
                 <?php
