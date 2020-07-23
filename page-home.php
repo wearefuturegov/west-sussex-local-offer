@@ -10,8 +10,16 @@ get_header(); ?>
         <div class="masthead__lede">
             <?php the_content(); ?>
         </div>
+
+        <form class="search-box" method="get">
+            <div class="search-box__field">
+                <label for="location_filter">Search information, advice and guidance</label>
+                <input name="s" placeholder="eg. autism"/>
+            </div>
+            <button class="search-box__button">Search</button>
+        </form>
     
-        <form class="search-box" method="get" action="https://local-offer.org/search">
+        <!-- <form class="search-box" method="get">
             <div class="search-box__field">
                 <label for="location_filter">Search services, events or information</label>
                 <input name="query" placeholder="eg. autism"/>
@@ -21,7 +29,7 @@ get_header(); ?>
                 <input name="location_filter" placeholder="eg. PO19 1RQ"/>
             </div>
             <button class="search-box__button">Search</button>
-        </form>
+        </form> -->
 
     </div>
 </section>
