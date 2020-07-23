@@ -18,6 +18,8 @@
 
                 <?php the_children(); ?>
 
+                <?php the_related_pages(); ?>
+
                 <?php the_downloads(); ?>
 
                 <?php the_pin_button(); ?>
