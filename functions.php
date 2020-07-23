@@ -98,29 +98,17 @@ function the_children(){
 function the_related_pages(){
     global $post;
     $related = get_field('related');
-    if( $related ):
-        $children = new WP_Query(array(
-            'post_type'      => 'page',
-            'post_status' => 'publish',
-            'posts_per_page' => -1,
-            'post_parent'    => $post->ID,
-            'post__in'       => $related,
-            'order'          => 'ASC',
-            'orderby'        => 'menu_order'
-        ));
-        if ( $children->have_posts() ):
-            echo "<div class='widget'>";
-            echo "<h2>Related pages</h2>";
-            echo "<ul class='child-page-list'>";
-            while ( $children->have_posts() ) : $children->the_post();
-                echo "<li>";
-                echo "<a href='" . get_the_permalink() . "'>" . get_the_title() . "</a>";
-                echo "</li>";
-            endwhile;
-            echo "</ul>";
-            echo "</div>";
-        endif; 
-    wp_reset_postdata();
+    if ( $related ):
+        echo "<div class='widget'>";
+        echo "<h2>Related pages</h2>";
+        echo "<ul class='child-page-list'>";
+        foreach($related as $post):
+            echo "<li>";
+            echo "<a href='" . get_the_permalink($post) . "'>" . get_the_title($post) . "</a>";
+            echo "</li>";
+        endforeach;
+        echo "</ul>";
+        echo "</div>";
     endif;
 }
 
