@@ -120,7 +120,7 @@ function the_downloads(){
 }
 
 function trails_nav_add_descriptions( $item_output, $item, $depth, $args ) {
-    if ( is_page_template( 'page-home.php' ) && !empty( $item->description ) ) {
+    if (is_front_page() && !empty( $item->description ) ) {
         $item_output = str_replace( 
             '">' . $args->link_before . $item->title. "</a>",
             '">' . $args->link_before . $item->title. "</a>" . '<p>' . $item->description . '</span>',

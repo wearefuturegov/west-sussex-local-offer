@@ -1,15 +1,9 @@
-<?php 
-/* Template Name: Home */
-get_header(); ?>
-
-<?php if(have_posts()): while(have_posts()): the_post(); ?>
+<?php get_header(); ?>
 
 <section class="masthead">
     <div class="container">
-        <h1 class="masthead__title"><?php the_title(); ?></h1>
-        <div class="masthead__lede">
-            <?php the_content(); ?>
-        </div>
+        <h1 class="masthead__title">Tools for schools</h1>
+        <div class="masthead__lede">This area of The Local Offer has been developed to provide schools and education settings with easier access to resources and information to support whole school development and daily practice.</div>
 
         <form class="search-box" method="get">
             <div class="search-box__field">
@@ -72,7 +66,5 @@ get_header(); ?>
         </div>
     </div>
 </section>
-
-<?php endwhile; endif; ?>
 
 <?php get_footer(); ?>

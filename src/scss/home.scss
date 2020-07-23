@@ -1,7 +1,7 @@
 @import "_vars";
 
 // only apply styles to pages using the home template file
-.page-template-page-home{
+.home{
 
     .masthead{
         background: white;
@@ -23,6 +23,7 @@
     .masthead__lede{
         font-size: 1.1rem;
         margin-bottom: 35px;
+        line-height: 1.5;
         @media screen and (min-width: 700px){
             max-width: 66.67%;
             font-size: 1.3rem;
