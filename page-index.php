@@ -32,9 +32,11 @@ get_header();
         ?>
 
         <div class="layout-sidebar-right">
-            <article class="layout-sidebar-right__main-content">
-                <?php the_content(); ?>
-            </article>
+            <div class="layout-sidebar-right__main-content">
+                <article class="content-area">
+                    <?php the_content(); ?>
+                </article>
+            </div>
         </div>
     </div>
 </div>

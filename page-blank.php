@@ -10,7 +10,7 @@
     <div class="container">
         <?php the_breadcrumbs(); ?>
         <h1 class="page-title"><?php the_title(); ?></h1>
-        <article class="main-content">
+        <article class="content-area">
             <?php the_content(); ?>
         </article>
     </div>

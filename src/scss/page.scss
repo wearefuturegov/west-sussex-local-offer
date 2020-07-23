@@ -35,7 +35,6 @@
 }
 
 .page-title__count{
-    // opacity: 0.85;
     font-weight: normal;
 }
 
@@ -47,10 +46,7 @@
     }
 }
 
-.layout-sidebar-right__main-content{
-    & > *{
-        margin-top: 0px !important;
-    }
+.content-area{
     margin-bottom: 35px;
     @supports(display: grid){
         @media screen and (min-width: 700px){
@@ -93,9 +89,9 @@
     }
 
     .page-last-edited{
+        margin-top: 45px;
         font-size: 1rem;
     }
-
 
     .wp-block-buttons{
         margin-bottom: 12px;
@@ -124,6 +120,9 @@
         }
     }
 
+    & > *{
+        margin-top: 0px !important;
+    }
 }
 
 .layout-sidebar-right__sidebar > .widget *:first-child{

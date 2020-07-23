@@ -47,8 +47,12 @@ function lo_excerpt_more($more) {
 }
 add_filter('excerpt_more', 'lo_excerpt_more');
 
-function the_breadcrumbs(){
-    global $post;
+function the_breadcrumbs($post_id = null){
+    if($post_id){
+        $post = get_post($post_id);
+    } else {
+        global $post;
+    }
     if(is_page()){
         $parent_id = $post->post_parent;
         $breadcrumbs = array();
@@ -61,7 +65,7 @@ function the_breadcrumbs(){
         echo "<ol class='breadcrumbs'>";
         echo "<li class='breadcrumbs__crumb'><a href='" . get_option("home") . "'>Home</a></li>";
         foreach ($breadcrumbs as $crumb) echo $crumb;
-        echo "<li class='breadcrumbs__crumb'>" . get_the_title() . "</li>";
+        echo "<li class='breadcrumbs__crumb'>" . get_the_title($post) . "</li>";
         echo "</ol>";
     }
 }
@@ -91,59 +95,81 @@ function the_children(){
     wp_reset_postdata();
 }
 
-function populate_tree_menu($post = null){
 
-    if(!$post) global $post;
-
-    $children = get_children(array(
-        'post_parent' => $post->ID,
-        'post_type'   => 'page',
-        'post_status' => 'publish',
-        'order'          => 'DESC'
-    ));
-
-    if($children){
-        echo "<ul class='tree-menu__list'>";
-        foreach ($children as $child){
-
-            $has_descendents = get_children(array(
-                'post_parent' => $child->ID,
-                'post_type'   => 'page',
-                'post_status' => 'publish',
-                'order'          => 'DESC'
-            ));
-
-            if($has_descendents){
-                echo "<li class='has-descendents'>";
-            } else {
-                echo "<li>";
+function the_downloads(){
+    global $post;
+    $downloads = get_field('downloads');
+    if( $downloads ):
+        echo "<div class='widget'><h2>Downloads</h2><ul class='download-list'>";
+        foreach( $downloads as $download ):
+            echo "<li class='download'>";
+            echo "<a href='". $download->guid . "'>";
+            if( $download->post_title ) { 
+                echo $download->post_title; 
+            } else { 
+                echo $download->post_name; 
             }
-
-            echo "<a href='" . get_the_permalink($child) . "'>";
-            echo get_the_title($child);
             echo "</a>";
+            echo "<p>" . $download->post_content . "</p>";
+            echo "<small>" . date_format(date_create($download->post_date), "F Y") . "</small>";
             echo "</li>";
-            populate_tree_menu($child);
-        }
-        echo "</ul>";
-    }
+        endforeach;
+        echo "</ul></div>";
+    wp_reset_postdata();
+    endif;
 }
 
-function the_tree_menu(){
-    echo "<nav class='tree-menu'>";
-    populate_tree_menu();
-    echo "</nav>";
-}
 
-function prefix_nav_description( $item_output, $item, $depth, $args ) {
-    if ( is_page_template( 'page-home.php' ) && !empty( $item->description ) ) {
-        $item_output = str_replace( 
-            '">' . $args->link_before . $item->title. "</a>",
-            '">' . $args->link_before . $item->title. "</a>" . '<p>' . $item->description . '</span>',
-            $item_output 
-        );
-    }
+// function populate_tree_menu($post = null){
+//     if(!$post) global $post;
+//     $children = get_children(array(
+//         'post_parent' => $post->ID,
+//         'post_type'   => 'page',
+//         'post_status' => 'publish',
+//         'order'          => 'DESC'
+//     ));
+//     if($children){
+//         echo "<ul class='tree-menu__list'>";
+//         foreach ($children as $child){
+
+//             $has_descendents = get_children(array(
+//                 'post_parent' => $child->ID,
+//                 'post_type'   => 'page',
+//                 'post_status' => 'publish',
+//                 'order'          => 'DESC'
+//             ));
+
+//             if($has_descendents){
+//                 echo "<li class='has-descendents'>";
+//             } else {
+//                 echo "<li>";
+//             }
+
+//             echo "<a href='" . get_the_permalink($child) . "'>";
+//             echo get_the_title($child);
+//             echo "</a>";
+//             echo "</li>";
+//             populate_tree_menu($child);
+//         }
+//         echo "</ul>";
+//     }
+// }
+
+// function the_tree_menu(){
+//     echo "<nav class='tree-menu'>";
+//     populate_tree_menu();
+//     echo "</nav>";
+// }
+
+// function prefix_nav_description( $item_output, $item, $depth, $args ) {
+//     if ( is_page_template( 'page-home.php' ) && !empty( $item->description ) ) {
+//         $item_output = str_replace( 
+//             '">' . $args->link_before . $item->title. "</a>",
+//             '">' . $args->link_before . $item->title. "</a>" . '<p>' . $item->description . '</span>',
+//             $item_output 
+//         );
+//     }
  
-    return $item_output;
-}
-add_filter( 'walker_nav_menu_start_el', 'prefix_nav_description', 10, 4 );
+//     return $item_output;
+// }
+// add_filter( 'walker_nav_menu_start_el', 'prefix_nav_description', 10, 4 );

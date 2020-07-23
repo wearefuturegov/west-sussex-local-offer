@@ -31,12 +31,13 @@ p, li{
     white-space: nowrap;
 }
 
+@import "page";
+
 @import "header";
 @import "mini-search";
 @import "announcement";
 
 @import "breadcrumbs";
-@import "page";
 @import "sidebar";
 
 @import "buttons";
@@ -44,5 +45,6 @@ p, li{
 @import "tree-menu";
 @import "pinboard";
 @import "downloads";
+@import "guides";
 
 @import "footer";
