@@ -37,12 +37,14 @@ get_header(); ?>
     ?>
 </section>
 
-<section class="campaign" style="background-image: url('<?php echo wp_get_attachment_url( get_option("campaign_image") ) ?>')">
-    <div class="container">
-        <h2><?php echo get_option("campaign_text"); ?></h2>
-        <a class="button button--white" href="<?php echo get_the_permalink(get_option("campaign_link")); ?>"><?php echo get_option("campaign_link_text"); ?></a>
-    </div>
-</section>
+<?php if(get_option("campaign_text")): ?>
+    <section class="campaign" style="background-image: url('<?php echo wp_get_attachment_url( get_option("campaign_image") ) ?>')">
+        <div class="container">
+            <h2><?php echo get_option("campaign_text"); ?></h2>
+            <a class="button button--white" href="<?php echo get_the_permalink(get_option("campaign_link")); ?>"><?php echo get_option("campaign_link_text"); ?></a>
+        </div>
+    </section>
+<?php endif ?>
 
 <section class="contact">
     <div class="container contact__inner">
