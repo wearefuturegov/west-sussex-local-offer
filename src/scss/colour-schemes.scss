@@ -1,6 +1,6 @@
 @import "_vars";
 
-.colour-scheme-green{
+.colour-scheme-green.page{
     .content-wrapper{
         a{
             color: green;
@@ -34,10 +34,13 @@
             border-color: green;
         }
     }
+    .feedback-banner{
+        background: green;
+    }
 }
 
 
-.colour-scheme-purple{
+.colour-scheme-purple.page{
     .content-wrapper{
         a{
             color: purple;
@@ -70,5 +73,8 @@
         .wp-block-quote{
             border-color: purple;
         }
+    }
+    .feedback-banner{
+        background: purple;
     }
 }
