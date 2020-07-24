@@ -57,7 +57,7 @@ $results = $wp_query->found_posts;
                 </nav>
 
             <?php else: ?>
-                <p>There are no posts to show</p>
+                <p class="no-results">No results match your search. Try widening your query.</p>
             <?php endif; ?>
             </article>
         </div>
