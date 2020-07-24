@@ -1,0 +1,26 @@
+@import "_vars";
+
+.search-results-list{
+    list-style: none;
+    padding-left: 0px;
+
+    padding: 25px 0px;
+    border-bottom: 1px solid $grey1;
+    margin-bottom: 0px;
+
+    &__result{
+        margin-bottom: 35px;
+        h2{
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        p{
+            margin: 0;
+            margin-bottom: 5px;
+            font-size: 1.15rem;
+        }
+    }
+
+}
+
+

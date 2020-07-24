@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php 
+
+get_header(); 
+
+global $paged;
+$max_page = $wp_query->max_num_pages;
+$results = $wp_query->found_posts;
+?>
 
 <div class="content-wrapper">
     <div class="container">
@@ -13,17 +20,48 @@
             <button class="search-box__button">Search</button>
         </form>
 
-        <p><?php echo $wp_query->found_posts; ?> results found</p>
+        <div class="layout-sidebar-right">
+            <article class="layout-sidebar-right__main-content">
+            <?php if(have_posts()): ?>
+                <p><?php echo $results; ?> results found</p>
+                <ol class="search-results-list">
+                    <?php while(have_posts()): the_post(); ?>
+                    <li class="search-results-list__result">
+                        <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                        <?php the_excerpt(); ?>
+                        <small>Last updated <?php echo get_the_date(" j F Y") ?></small>
+                    </li>
+                    <?php endwhile; ?>
+                </ol>
 
-        <?php if(have_posts()): while(have_posts()): the_post(); ?>
-            <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-            <?php the_excerpt(); ?>
-            <small>Last updated <?php echo get_the_date(" j F Y") ?></small>
-        <?php endwhile; ?>
-            <?php posts_nav_link(); ?>
-        <?php else: ?>
-            <p>There are no posts to show</p>
-        <?php endif; ?>
+                <nav class="guide-navigation">
+                    <ul class="guide-navigation__list">  
+                        <?php if($paged > 1): ?>
+                        <li class="guide-navigation__item guide-navigation__item--previous">
+                            <a class="guide-navigation__link" href="<?php echo previous_posts(); ?>">
+                                <span>Previous</span>    
+                                <span>Page <?php echo $paged - 1 ?> of <?php echo $max_page ?></span>
+                            </a>
+                        </li>
+                        <?php endif; ?>
+
+                        <?php if(($paged + 1) <= $max_page): ?>
+                        <li class="guide-navigation__item guide-navigation__item--next"> 
+                            <a class="guide-navigation__link" href="<?php echo next_posts(); ?>">
+                                <span>Next</span>   
+                                <span>Page <?php echo $paged + 1 ?> of <?php echo $max_page ?></span>
+                            </a>
+                        </li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+
+            <?php else: ?>
+                <p>There are no posts to show</p>
+            <?php endif; ?>
+            </article>
+        </div>
+
     </div>
 </div>
 
