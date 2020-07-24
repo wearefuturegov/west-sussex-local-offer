@@ -5,8 +5,8 @@ function feedback_metabox_content(){
     $yes = get_post_meta($post->ID, "feedback_yes", true) || 0;
     $no = get_post_meta($post->ID, "feedback_no", true) || 0;
     $total = $yes + $no;
-    echo "<p><strong>Yes:</strong> " . $yes . " (" . ($yes/$total*100)  . "%)</p>";
-    echo "<p><strong>No:</strong> " . $no . " (" . ($no/$total*100) . "%)</p>";
+    echo "<p><strong>Yes:</strong> " . $yes;
+    echo "<p><strong>No:</strong> " . $no;
 }
 
 add_action("add_meta_boxes", function(){
