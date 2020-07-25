@@ -62,14 +62,14 @@
         }
     }
 
-    p, li{
+    p, li, details{
         font-size: 1.1rem;
         @media screen and (min-width: 700px){
             font-size: 1.15rem;
         }
     }
 
-    p, ul, ol{
+    p, ul, ol, details{
         margin-bottom: 20px;
         @media screen and (min-width: 700px){
             margin-bottom: 25px;
@@ -149,6 +149,24 @@
         margin: 35px 0px;
         padding-left: 25px;
         border-left: 5px solid $blue;
+    }
+
+    details{
+        summary{
+            color: $blue;
+            cursor: pointer;
+            display: inline flow-root list-item;
+            &:hover{
+                text-decoration: underline;
+            }
+            &:focus{
+                background: $focus;
+                outline: 3px solid $focus;
+            }
+            &:active{
+                color: $dark;
+            }
+        }
     }
 
     .wp-block-buttons{
