@@ -29,7 +29,7 @@ $results = $wp_query->found_posts;
                     <li class="search-results-list__result">
                         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                         <?php the_excerpt(); ?>
-                        <small>Last updated <?php echo get_the_date(" j F Y") ?></small>
+                        <small>Last updated <?php the_modified_time(" j F Y") ?></small>
                     </li>
                     <?php endwhile; ?>
                 </ol>

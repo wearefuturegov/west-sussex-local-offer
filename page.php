@@ -10,7 +10,7 @@
             <article class="layout-sidebar-right__main-content">
                 <div class="content-area">
                     <?php the_content(); ?>
-                    <p class="page-last-edited">Last updated <?php the_date(" j F Y")  ?></p>
+                    <p class="page-last-edited">Last updated <?php the_modified_time(" j F Y")  ?></p>
                 </div>
             </article>
 

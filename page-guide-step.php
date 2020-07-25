@@ -47,7 +47,7 @@ get_header();
 
                 <article class="content-area content-area--guide">
                     <?php the_content(); ?>
-                    <p class="page-last-edited">Last updated <?php the_date(" j F Y")  ?></p>
+                    <p class="page-last-edited">Last updated <?php the_modified_time(" j F Y")  ?></p>
                 </article>
 
                 <?php
