@@ -66,6 +66,8 @@ get_header();
 
             <aside class="layout-sidebar-right__sidebar">
 
+                <?php the_related_pages(); ?>
+
                 <?php the_downloads(); ?>
 
                 <?php the_pin_button(); ?>

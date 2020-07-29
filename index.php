@@ -14,8 +14,8 @@ $results = $wp_query->found_posts;
 
         <form class="search-box" method="get">
             <div class="search-box__field">
-                <label for="location_filter">Search information, advice and guidance</label>
-                <input name="s" placeholder="eg. autism" value="<?php the_search_query(); ?>"/>
+                <label for="s">Search information, advice and guidance</label>
+                <input id="s" name="s" placeholder="eg. autism" value="<?php the_search_query(); ?>"/>
             </div>
             <button class="search-box__button">Search</button>
         </form>
