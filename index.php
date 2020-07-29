@@ -45,7 +45,7 @@ $results = $wp_query->found_posts;
                         </li>
                         <?php endif; ?>
 
-                        <?php if(($paged + 1) <= $max_page): ?>
+                        <?php if(($paged + 1) < $max_page): ?>
                         <li class="guide-navigation__item guide-navigation__item--next"> 
                             <a class="guide-navigation__link" href="<?php echo next_posts(); ?>">
                                 <span>Next</span>   
