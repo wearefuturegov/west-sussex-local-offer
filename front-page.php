@@ -2,7 +2,7 @@
 
 <section class="masthead">
     <div class="container">
-        <h1 class="masthead__title">Tools for schools</h1>
+        <h1 class="masthead__title"><?php echo get_bloginfo("name"); ?></h1>
         <div class="masthead__lede">This area of The Local Offer has been developed to provide schools and education settings with easier access to resources and information to support whole school development and daily practice.</div>
 
         <form class="search-box" method="get">
