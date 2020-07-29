@@ -38,6 +38,9 @@ add_theme_support( 'custom-logo' );
 add_theme_support( 'post-thumbnails' ); 
 
 
+add_post_type_support( 'page', 'excerpt' );
+
+
 function lo_custom_excerpt_length( $length ) {
     return 20;
 }
