@@ -10,6 +10,14 @@ get_header();
         <?php the_breadcrumbs(); ?>
         <h1 class="page-title"><?php the_title(); ?></h1>
 
+        <div class="layout-sidebar-right">
+            <div class="layout-sidebar-right__main-content">
+                <article class="content-area">
+                    <?php the_content(); ?>
+                </article>
+            </div>
+        </div>
+
         <?php 
         $children = new WP_Query(array(
             'post_type'      => 'page',
@@ -30,14 +38,6 @@ get_header();
             echo "</ul>";
         endif; wp_reset_postdata();
         ?>
-
-        <div class="layout-sidebar-right">
-            <div class="layout-sidebar-right__main-content">
-                <article class="content-area">
-                    <?php the_content(); ?>
-                </article>
-            </div>
-        </div>
     </div>
 </div>
 
