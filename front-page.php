@@ -54,16 +54,13 @@
             <h2>Contact us</h2>
             <p>Call the West Sussex local Offer team on 0330 222 8555 and ask for "Local Offer". If we are out of the office please leave a message with your contact phone number and we will return your call as soon as possible.</p>
             <p>We are always seeking to improve our Local Offer so please send the team any feedback you have by e-mailing localoffer@westsussex.gov.uk</p>
-            <p>
-                <a href="#">Facebook</a>
-                <a href="#">Twitter</a>
-            </p>
+            <a class="button" href="mailto:localoffer@westsussex.gov.uk">Email us</a>
         </div>
-        <div class="contact__panel">
+        <!-- <div class="contact__panel">
             <h2>Promote your services and events</h2>
             <p>If you provide services or run events for the SEND Community, please sign up to promote them on this website.</p>
             <a class="button" href="#">Sign up</a>
-        </div>
+        </div> -->
     </div>
 </section>
 
