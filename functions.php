@@ -125,7 +125,7 @@ function the_related_pages(){
     endif;
 }
 
-function the_downloads(){
+function the_downloads($post = null){
     global $post;
     $downloads = get_field('downloads');
     if( $downloads ):
@@ -151,12 +151,11 @@ function the_downloads(){
 function trails_nav_add_descriptions( $item_output, $item, $depth, $args ) {
     if (is_front_page() && !empty( $item->description ) ) {
         $item_output = str_replace( 
-            '">' . $args->link_before . $item->title. "</a>",
-            '">' . $args->link_before . $item->title. "</a>" . '<p>' . $item->description . '</span>',
+            $item->title . "</a>",
+            $item->title . "</a><p>" . $item->description . "</p>",
             $item_output 
         );
     }
- 
     return $item_output;
 }
 add_filter( 'walker_nav_menu_start_el', 'trails_nav_add_descriptions', 10, 4 );
