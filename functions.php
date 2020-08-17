@@ -5,9 +5,10 @@ require "inc/pinboard.php";
 require "inc/feedback.php";
 
 function lo_load_scripts_and_styles() {
-    wp_enqueue_style("index", get_stylesheet_directory_uri()."/dist/css/index.css");
+    wp_enqueue_style("styles", get_stylesheet_directory_uri()."/dist/css/index.css");
     wp_enqueue_style("fonts", "https://fonts.googleapis.com/css?family=Lato:400,500,600,700");
-    wp_enqueue_script("index", get_stylesheet_directory_uri()."/dist/js/index.js");
+    
+    wp_enqueue_script("app", get_stylesheet_directory_uri()."/dist/js/index.js");
 }
 add_action("wp_enqueue_scripts", "lo_load_scripts_and_styles");
 
