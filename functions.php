@@ -123,9 +123,10 @@ function the_related_pages(){
         echo "</ul>";
         echo "</div>";
     endif;
+    wp_reset_postdata();
 }
 
-function the_downloads($post = null){
+function the_downloads(){
     global $post;
     $downloads = get_field('downloads');
     if( $downloads ):
