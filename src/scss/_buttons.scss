@@ -12,6 +12,7 @@
     font-size: 1.2rem;
     text-decoration: none;
     cursor: pointer;
+    margin-top: 7px;
     &:hover{
         color: darken($blue, 10);
         border-color:  darken($blue, 10);
