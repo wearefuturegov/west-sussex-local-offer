@@ -45,8 +45,8 @@
     <div class="container contact__inner">
         <div class="contact__panel">
             <h2>Contact us</h2>
-            <p>Call the West Sussex local Offer team on 0330 222 8555 and ask for "Local Offer". If we are out of the office please leave a message with your contact phone number and we will return your call as soon as possible.</p>
-            <p>We are always seeking to improve our Local Offer so please send the team any feedback you have by e-mailing localoffer@westsussex.gov.uk</p>
+            <p>Call the West Sussex local Offer team on <strong>0330 222 8555</strong> and ask for "Local Offer". If we are out of the office please leave a message with your contact phone number and we will return your call as soon as possible.</p>
+            <p>You can also email the team for help.</p>
             <a class="button" href="mailto:localoffer@westsussex.gov.uk">Email us</a>
         </div>
         <div class="contact__panel">
