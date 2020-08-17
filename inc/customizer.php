@@ -6,7 +6,6 @@ function lbh_add_customizer_stuff( $wp_customize ) {
         "title" => "Announcement",
         "description" => "Alert users to important, time-sensitive information."
     ));
-
     $wp_customize->add_setting("show_announcement", array(
         "default" => false,
         "type" => "option"
@@ -20,7 +19,6 @@ function lbh_add_customizer_stuff( $wp_customize ) {
     $wp_customize->add_setting("announcement_link", array(
         "type" => "option"
     ));
-
     $wp_customize->add_control("show_announcement", array(
         "type" => "checkbox",
         "section" => "announcement",
@@ -42,6 +40,38 @@ function lbh_add_customizer_stuff( $wp_customize ) {
        "label" => "Link"
     ));
 
+
+
+    $wp_customize->add_section("hero", array(
+        "title" => "Hero",
+        "description" => "The first part of the homepage."
+    ));
+
+    $wp_customize->add_setting("hero_headline", array(
+        "type" => "option"
+    ));
+    $wp_customize->add_setting("hero_lede", array(
+        "type" => "option"
+    ));
+    $wp_customize->add_setting("hero_image", array(
+        "default" => false,
+        "type" => "option"
+    ));
+    $wp_customize->add_control("hero_headline", array(
+        "type" => "text",
+        "section" => "hero",
+        "label" => "Headline"
+    ));
+    $wp_customize->add_control("hero_lede", array(
+        "type" => "textarea",
+        "section" => "hero",
+        "label" => "Lede"
+    ));
+    $wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'hero_image', array(
+        'label' => "Background image",
+        'section' => 'hero',
+        'mime_type' => 'image',
+    )));
 
 
 
@@ -84,8 +114,6 @@ function lbh_add_customizer_stuff( $wp_customize ) {
         'type' => 'dropdown-pages',
         "label" => "Button link"
      ));
-
-
 
 
 

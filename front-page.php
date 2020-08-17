@@ -1,32 +1,25 @@
 <?php get_header(); ?>
 
-<section class="masthead">
+<section class="masthead" style="background-image: url('<?php echo wp_get_attachment_url( get_option("hero_image") ) ?>')">
     <div class="container">
-        <h1 class="masthead__title"><?php echo get_bloginfo("name"); ?></h1>
-        <div class="masthead__lede">This area of The Local Offer has been developed to provide schools and education settings with easier access to resources and information to support whole school development and daily practice.</div>
 
-        <form class="search-box" method="get">
-            <div class="search-box__field">
-                <label for="location_filter">Search information, advice and guidance</label>
-                <input name="s" placeholder="eg. autism"/>
+        <h1 class="masthead__title"><?php echo get_option("hero_headline"); ?></h1>
+        <p class="masthead__lede"><?php echo get_option("hero_lede"); ?></p>
+
+        <form class="masthead__search" method="get">
+            <div class="masthead__field">
+                <label for="s">Search information, advice and guidance</label>
+                <input name="s" type="search" placeholder="eg. autism"/>
             </div>
-            <button class="search-box__button">Search</button>
+            <button class="masthead__button">Search</button>
         </form>
-    
-        <!-- <form class="search-box" method="get">
-            <div class="search-box__field">
-                <label for="location_filter">Search services, events or information</label>
-                <input name="query" placeholder="eg. autism"/>
-            </div>
-            <div class="search-box__field">
-                <label for="location_filter">Near</label>
-                <input name="location_filter" placeholder="eg. PO19 1RQ"/>
-            </div>
-            <button class="search-box__button">Search</button>
-        </form> -->
 
     </div>
 </section>
+
+
+
+
 
 <section class="trails">
     <h2 class="visually-hidden">Popular topics</h2>
@@ -56,11 +49,12 @@
             <p>We are always seeking to improve our Local Offer so please send the team any feedback you have by e-mailing localoffer@westsussex.gov.uk</p>
             <a class="button" href="mailto:localoffer@westsussex.gov.uk">Email us</a>
         </div>
-        <!-- <div class="contact__panel">
-            <h2>Promote your services and events</h2>
-            <p>If you provide services or run events for the SEND Community, please sign up to promote them on this website.</p>
-            <a class="button" href="#">Sign up</a>
-        </div> -->
+        <div class="contact__panel">
+            <h2>Help us improve this service</h2>
+            <p>This is a brand new service, and your feedback will help us improve it.</p>
+            <p>We're particularly interested in hearing from teachers and other people who use these resources in their jobs.</p>
+            <a class="button" href="#">Give feedback</a>
+        </div>
     </div>
 </section>
 
