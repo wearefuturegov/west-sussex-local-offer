@@ -33,11 +33,19 @@
 .content-area--guide{
     border-top: 1px solid $grey1;
     padding: 25px 0px;
-    border-bottom: 1px solid $grey1;
+    // border-bottom: 1px solid $grey1;
     margin-bottom: 0px;
 }
 
+.content-area--post{
+    margin-bottom: 35px;
+    @media screen and (min-width: 700px){
+        margin-bottom: 45px;
+    }
+}
+
 .guide-navigation{
+    border-top: 1px solid #BCBCBC;
     margin-bottom: 35px;
 
     &__list{

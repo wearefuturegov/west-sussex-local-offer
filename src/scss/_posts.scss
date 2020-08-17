@@ -1,0 +1,12 @@
+@import "_vars";
+
+.post-meta{
+    margin-top: 0px;
+    padding-left: 0px;
+    list-style: none;
+    font-size: 1rem;
+    @media screen and (min-width: 700px){
+        font-size: 1.1rem;
+        max-width: 66.67%;
+    }
+}

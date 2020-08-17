@@ -25,6 +25,14 @@ add_action( "init", "lo_register_menus" );
 
 function lo_widgets_init() {
 	register_sidebar( array(
+		'name'          => 'Post sidebar',
+		'id'            => 'post_sidebar',
+		'before_widget' => '<div class="widget">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2>',
+		'after_title'   => '</h2>',
+    ));
+    register_sidebar( array(
 		'name'          => 'Page sidebar',
 		'id'            => 'page_sidebar',
 		'before_widget' => '<div class="widget">',
