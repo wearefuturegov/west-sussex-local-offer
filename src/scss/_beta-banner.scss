@@ -1,0 +1,41 @@
+.beta-banner{
+    padding: 10px 25px;
+    background: $focus;
+    color: $dark;
+
+    .container{
+        font-size: 0.9rem;
+        display: flex;
+        flex-direction: row;
+        // justify-self: flex-start;
+        align-items: flex-start;
+    }
+
+    p{
+        margin: 0;
+    }
+
+    a{
+        color: $dark;
+        &:hover{
+            text-decoration: none;
+        }
+        &:active{
+            color: $dark;
+        }
+        &:focus{
+            background: $dark;
+            color: $focus;
+            outline: 3px solid $dark;
+        }
+    }
+
+    strong{
+        padding: 0px 5px;
+        font-weight: bold;
+        color: $focus;
+        background: $dark;
+        text-transform: uppercase;
+        margin-right: 10px;
+    }
+}

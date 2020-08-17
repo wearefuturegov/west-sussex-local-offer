@@ -8,6 +8,14 @@
     </head>
     <body <?php body_class(colour_scheme()); ?>>
 
+    <section class="beta-banner">
+        <div class="container">
+            <strong>Beta</strong> 
+            <p>This is a brand new service — <a href="#">your feedback</a> helps us improve it.
+        </div>    
+    </section>
+
+
     <header class="site-header">
         <div class="site-header__inner container">
             <a class="site-header__masthead" href="<?php echo get_home_url(); ?>">
