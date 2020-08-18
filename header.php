@@ -11,7 +11,7 @@
     <section class="beta-banner">
         <div class="container">
             <strong>Beta</strong> 
-            <p>This is a brand new service — <a href="#">your feedback</a> helps us improve it.
+            <p>This is a brand new service — <a href="mailto:localoffer@westsussex.gov.uk?subject=Feedback%20on%20Tools%20for%20Schools">your feedback</a> helps us improve it.
         </div>    
     </section>
 
