@@ -53,7 +53,7 @@
             <h2>Help us improve this service</h2>
             <p>This is a brand new service, and your feedback will help us improve it.</p>
             <p>We're particularly interested in hearing from teachers and other people who use these resources in their jobs.</p>
-            <a class="button" href="mailto:localoffer@westsussex.gov.uk?subject=Feedback%20on%20Tools%20for%20Schools">Give feedback</a>
+            <a class="button" href="mailto:localoffer@westsussex.gov.uk?subject=Feedback%20on%20Tools%20for%20Schools%20website">Give feedback</a>
         </div>
     </div>
 </section>
