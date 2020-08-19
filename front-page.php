@@ -65,14 +65,13 @@ if($query->have_posts()): ?>
     <div class="container contact__inner">
         <div class="contact__panel">
             <h2>Contact us</h2>
-            <p>You can email the West Sussex Local Offer team any time, or call us on <strong>0330 222 8555</strong> and ask for "Local Offer".</p>
-            <p>If we're out of the office, leave a message with your contact phone number and we'll return your call as soon as possible.</p>
+            <p>You can email the West Sussex Local Offer team any time.</p>
             <a class="button" href="mailto:localoffer@westsussex.gov.uk">Email us</a>
         </div>
         <div class="contact__panel">
-            <h2>Help us improve this service</h2>
-            <p>This is a brand new service, and your feedback will help us improve it.</p>
-            <p>We're particularly interested in hearing from teachers and other people who use these resources in their jobs.</p>
+            <h2>Give feedback on this website</h2>
+            <p>This is a brand new website that we're developing with schools, educators, parent carers and others as part of the SEND and Inclusion Strategy.</p>
+            <p>Please let us know how useful you find it and what further information you would like included.</p>
             <a class="button" href="mailto:localoffer@westsussex.gov.uk?subject=Feedback%20on%20Tools%20for%20Schools%20website">Give feedback</a>
         </div>
     </div>
