@@ -64,15 +64,16 @@ if($query->have_posts()): ?>
 <section class="contact">
     <div class="container contact__inner">
         <div class="contact__panel">
-            <h2>Contact us</h2>
-            <p>You can email the West Sussex Local Offer team any time.</p>
-            <a class="button" href="mailto:localoffer@westsussex.gov.uk">Email us</a>
-        </div>
-        <div class="contact__panel">
             <h2>Give feedback on this website</h2>
             <p>This is a brand new website that we're developing with schools, educators, parent carers and others as part of the SEND and Inclusion Strategy.</p>
             <p>Please let us know how useful you find it and what further information you would like included.</p>
             <a class="button" href="mailto:localoffer@westsussex.gov.uk?subject=Feedback%20on%20Tools%20for%20Schools%20website">Give feedback</a>
+        </div>
+
+        <div class="contact__panel">
+            <h2>Contact us</h2>
+            <p>You can email the Tools for Schools team any time.</p>
+            <a class="button" href="mailto:localoffer@westsussex.gov.uk">Email us</a>
         </div>
     </div>
 </section>
