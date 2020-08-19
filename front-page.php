@@ -19,8 +19,6 @@
 
 
 
-
-
 <section class="trails">
     <h2 class="visually-hidden">Popular topics</h2>
     <?php 
@@ -33,13 +31,35 @@
 </section>
 
 <?php if(get_option("campaign_text")): ?>
-    <section class="campaign" style="background-image: url('<?php echo wp_get_attachment_url( get_option("campaign_image") ) ?>')">
+    <section class="campaign">
         <div class="container">
             <h2><?php echo get_option("campaign_text"); ?></h2>
+            <p><?php echo get_option("campaign_lede"); ?></p>
             <a class="button button--white" href="<?php echo get_the_permalink(get_option("campaign_link")); ?>"><?php echo get_option("campaign_link_text"); ?></a>
         </div>
     </section>
 <?php endif ?>
+
+<?php $query = new WP_Query(array(
+    "posts_per_page" => 2
+));
+if($query->have_posts()): ?>
+    <section class="blog-posts">
+        <div class="container">
+            <h2>Latest blog posts</h2>
+            <div class="blog-posts__grid">
+            <?php while($query->have_posts()): $query->the_post(); ?>
+
+                <article>
+                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                    <p><?php the_excerpt(); ?></p>
+                </article> 
+
+            <?php endwhile; ?>
+</div>
+        </div>
+    </section>
+<?php endif; ?>
 
 <section class="contact">
     <div class="container contact__inner">

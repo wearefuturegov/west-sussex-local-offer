@@ -83,8 +83,7 @@ function lbh_add_customizer_stuff( $wp_customize ) {
     $wp_customize->add_setting("campaign_text", array(
         "type" => "option"
     ));
-    $wp_customize->add_setting("campaign_image", array(
-        "default" => false,
+    $wp_customize->add_setting("campaign_lede", array(
         "type" => "option"
     ));
     $wp_customize->add_setting("campaign_link_text", array(
@@ -95,15 +94,15 @@ function lbh_add_customizer_stuff( $wp_customize ) {
     ));
 
     $wp_customize->add_control("campaign_text", array(
+        "type" => "text",
+        "section" => "campaign",
+        "label" => "Text"
+    ));
+    $wp_customize->add_control("campaign_lede", array(
         "type" => "textarea",
         "section" => "campaign",
         "label" => "Text"
     ));
-    $wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'campaign_image', array(
-        'label' => "Background image",
-        'section' => 'campaign',
-        'mime_type' => 'image',
-    )));
     $wp_customize->add_control("campaign_link_text", array(
         "type" => "text",
         "section" => "campaign",
