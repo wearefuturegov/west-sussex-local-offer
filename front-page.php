@@ -41,7 +41,7 @@
 <?php endif ?>
 
 <?php $query = new WP_Query(array(
-    "posts_per_page" => 2
+    "posts_per_page" => 3
 ));
 if($query->have_posts()): ?>
     <section class="blog-posts">
