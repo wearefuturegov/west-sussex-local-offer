@@ -73,7 +73,7 @@ if($query->have_posts()): ?>
 
         <div class="contact__panel">
             <h2>Contact us</h2>
-            <p>You can email the Tools for Schools team any time.</p>
+            <p>You can email the Tools for Schools team any time. We work part-time but will respond to all enquiries as soon as we can. </p>
             <a class="button" href="mailto:toolsforschools@westsussex.gov.uk">Email us</a>
         </div>
     </div>
