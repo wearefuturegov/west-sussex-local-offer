@@ -31,7 +31,7 @@
 </section>
 
 <?php if(get_option("campaign_text")): ?>
-    <section class="campaign">
+    <section class="campaign <?php echo get_option("campaign_color"); ?>">
         <div class="container">
             <h2><?php echo get_option("campaign_text"); ?></h2>
             <p><?php echo get_option("campaign_lede"); ?></p>

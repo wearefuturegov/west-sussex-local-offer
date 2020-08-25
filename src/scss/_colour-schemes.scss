@@ -120,3 +120,15 @@ $pink: #D34491;
         background: $pink;
     }
 }
+
+.home .campaign{
+    &--purple{
+        background-color: purple;
+    }
+    &--pink{
+        background-color: $pink;
+    }
+    &--green{
+        background-color: green;
+    }
+}

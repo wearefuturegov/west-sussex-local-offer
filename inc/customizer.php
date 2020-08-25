@@ -86,6 +86,9 @@ function lbh_add_customizer_stuff( $wp_customize ) {
     $wp_customize->add_setting("campaign_lede", array(
         "type" => "option"
     ));
+    $wp_customize->add_setting("campaign_color", array(
+        "type" => "option"
+    ));
     $wp_customize->add_setting("campaign_link_text", array(
         "type" => "option"
     ));
@@ -102,6 +105,17 @@ function lbh_add_customizer_stuff( $wp_customize ) {
         "type" => "textarea",
         "section" => "campaign",
         "label" => "Text"
+    ));
+    $wp_customize->add_control("campaign_color", array(
+        "type" => "radio",
+        "section" => "campaign",
+        "label" => "Background colour",
+        "choices" => array(
+            "" => "Blue",
+            "campaign--purple" => "Purple",
+            "campaign--pink" => "Pink",
+            "campaign--green" => "Green"
+        )
     ));
     $wp_customize->add_control("campaign_link_text", array(
         "type" => "text",
