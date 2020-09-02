@@ -66,7 +66,7 @@ if($query->have_posts()): ?>
     <div class="container contact__inner">
         <div class="contact__panel">
             <h2>Give feedback on this website</h2>
-            <p>This is a brand new website that we're developing with schools, educators, parent carers and others as part of the SEND and Inclusion Strategy.</p>
+            <p>This is a brand new website that we're developing with schools, education settings, parent carers and other stakeholders as part of the SEND and Inclusion Strategy.</p>
             <p>Please let us know how useful you find it and what further information you would like included.</p>
             <a class="button" href="mailto:toolsforschools@westsussex.gov.uk?subject=Feedback%20on%20Tools%20for%20Schools%20website">Give feedback</a>
         </div>
