@@ -1,264 +1,276 @@
 @import "_vars";
 
-.content-wrapper{
-    background: white;
-    padding: 35px 25px;
-    @media screen and (min-width: 700px){
-        padding: 55px 25px;
-    }
+.content-wrapper {
+  background: white;
+  padding: 35px 25px;
+  @media screen and (min-width: 700px) {
+    padding: 55px 25px;
+  }
 
-    a{
-        color: $blue;
-        text-decoration: none;
-        &:hover{
-            text-decoration: underline;
-        }
-        &:focus{
-            color: $dark;
-            background: $focus;
-            outline: 3px solid $focus;
-        }
-        &:active{
-            color: $dark;
-        }
+  a {
+    color: $blue;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
     }
-
+    &:focus {
+      color: $dark;
+      background: $focus;
+      outline: 3px solid $focus;
+    }
+    &:active {
+      color: $dark;
+    }
+  }
 }
 
-.page-title{
-    margin-top: 0px;
-    margin-bottom: 40px;
-    @media screen and (min-width: 700px){
-        font-size: 2.7rem;
-        margin-bottom: 45px;
-        max-width: 66.67%;
-    }
+.page-title {
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 40px;
+  @media screen and (min-width: 700px) {
+    font-size: 2.7rem;
+    margin-bottom: 45px;
+    max-width: 66.67%;
+  }
 }
 
-.page-title__count{
-    font-weight: normal;
+.page-title__count {
+  font-weight: normal;
 }
 
-.layout-sidebar-right{
-    @media screen and (min-width: 700px){
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        column-gap: 75px;
-    }
+.layout-sidebar-right {
+  @media screen and (min-width: 700px) {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 75px;
+  }
 }
 
 // all user-supplied content lives in this container
-.content-area{
-    margin-bottom: 35px;
-    @supports(display: grid){
-        @media screen and (min-width: 700px){
-            margin-bottom: 0px;
-        }
+.content-area {
+  margin-bottom: 35px;
+  @supports (display: grid) {
+    @media screen and (min-width: 700px) {
+      margin-bottom: 0px;
+    }
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 35px;
+    @media screen and (min-width: 700px) {
+      margin-top: 40px;
+    }
+  }
+
+  p,
+  li,
+  details {
+    font-size: 1.1rem;
+    @media screen and (min-width: 700px) {
+      font-size: 1.15rem;
+    }
+  }
+
+  p,
+  ul,
+  ol,
+  details {
+    margin-bottom: 20px;
+    @media screen and (min-width: 700px) {
+      margin-bottom: 25px;
+    }
+  }
+
+  li {
+    padding-left: 10px;
+    margin-bottom: 5px;
+    &:last-of-type {
+      margin-bottom: 0px;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .page-last-edited {
+    margin-top: 45px;
+    font-size: 1rem;
+  }
+
+  .wp-block-separator {
+    margin: 35px 0px;
+    &.is-style-default,
+    &.is-style-wide {
+      border: none;
+      border-bottom: 1px solid $grey1;
+    }
+  }
+
+  .wp-block-table {
+    margin: 35px 0px;
+    overflow-x: scroll;
+    table,
+    th,
+    td {
+      background: none;
+      border-collapse: collapse;
+      border: 1px solid transparentize($grey1, 0.5);
     }
 
-    h2, h3, h4, h5, h6{
-        margin-top: 35px;
-        @media screen and (min-width: 700px){
-            margin-top: 40px;
-        }
+    thead th,
+    tfoot td {
+      background: $blue;
+      color: white;
     }
 
-    p, li, details{
-        font-size: 1.1rem;
-        @media screen and (min-width: 700px){
-            font-size: 1.15rem;
-        }
+    tr:nth-of-type(odd) {
+      background: $pale;
     }
 
-    p, ul, ol, details{
-        margin-bottom: 20px;
-        @media screen and (min-width: 700px){
-            margin-bottom: 25px;
-        }
+    td,
+    th {
+      padding: 12px;
     }
 
-    li{
-        padding-left: 10px;
-        margin-bottom: 5px;
-        &:last-of-type{
-            margin-bottom: 0px;
-        }
+    figcaption {
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+  }
+
+  .wp-block-image,
+  .wp-block-embed {
+    margin: 35px 0px;
+
+    iframe {
+      max-width: 100%;
     }
 
-    img{
-        max-width: 100%;
-        height: auto;
+    figcaption {
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+  }
+
+  .wp-block-quote {
+    margin: 35px 0px;
+    padding-left: 25px;
+    border-left: 5px solid $blue;
+  }
+
+  details {
+    summary {
+      color: $blue;
+      cursor: pointer;
+      display: inline flow-root list-item;
+      &:hover {
+        text-decoration: underline;
+      }
+      &:focus {
+        background: $focus;
+        outline: 3px solid $focus;
+      }
+      &:active {
+        color: $dark;
+      }
+    }
+  }
+
+  .wp-block-buttons {
+    margin-bottom: 22px;
+    @media screen and (min-width: 700px) {
+      margin-bottom: 17px;
     }
 
-    .page-last-edited{
-        margin-top: 45px;
-        font-size: 1rem;
-    }
-
-    .wp-block-separator{
-        margin: 35px 0px;
-        &.is-style-default,
-        &.is-style-wide{
-            border: none;
-            border-bottom: 1px solid $grey1;
-        }
-    }
-
-    .wp-block-table{
-        margin: 35px 0px;
-        overflow-x: scroll;
-        table, th, td{
-            background: none;
-            border-collapse: collapse;
-            border: 1px solid transparentize($grey1, 0.5);
-        }
-
-        thead th, tfoot td{
-            background: $blue;
-            color: white;
-        }
-
-        tr:nth-of-type(odd){
-            background: $pale;
-        }
-
-        td, th{
-            padding: 12px;
-        }
-
-        figcaption{
-            font-size: 1rem;
-            margin-top: 10px;
-        }
-    }
-
-    .wp-block-image,
-    .wp-block-embed{
-        margin: 35px 0px;
-
-        iframe{
-            max-width: 100%;
-        }
-
-        figcaption{
-            font-size: 1rem;
-            margin-top: 10px;
-        }
-    }
-
-    .wp-block-quote{
-        margin: 35px 0px;
-        padding-left: 25px;
-        border-left: 5px solid $blue;
-    }
-
-    details{
-        summary{
-            color: $blue;
-            cursor: pointer;
-            display: inline flow-root list-item;
-            &:hover{
-                text-decoration: underline;
-            }
-            &:focus{
-                background: $focus;
-                outline: 3px solid $focus;
-            }
-            &:active{
-                color: $dark;
-            }
-        }
-    }
-
-    .wp-block-buttons{
-        margin-bottom: 22px;
-        @media screen and (min-width: 700px){
-            margin-bottom: 17px;
-        }
-
-        .wp-block-button__link{
-            display: inline-block;
-            background: $blue;
-            color: white;
-            font-weight: bold;
-            // slightly more padding to make up for lack of border
-            padding: 13px 28px;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            text-decoration: none;
-            cursor: pointer;
-            &:hover{
-                background:  darken($blue, 10);
-            }
-            &:focus{
-                outline: none;
-                box-shadow: 0px 0px 0px 3px $focus;
-            }
-        }
-    }
-
-    & > *{
-        margin-top: 0px !important;
-    }
-}
-
-.layout-sidebar-right__sidebar > .widget *:first-child{
-    margin-top: 0px;
-}
-
-.widget{
-    margin-bottom: 35px;
-}
-
-.child-tiles{
-    list-style: none;
-    padding-left: 0px;
-    margin-bottom: 40px;
-    @media screen and (min-width: 700px){
-        margin-bottom: 45px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 25px;
-    }
-}
-
-.child-tile{
-    position: relative;
-    // background: $pale;
-    background: transparentize($blue, 0.9);
-    border-radius: 5px;
-    padding: 25px;
-    margin-bottom: 25px;    
-    @media screen and (min-width: 700px){
-        @supports (display: grid){
-            margin-bottom: 0px;
-        }
-    }
-
-    &:focus-within{
+    .wp-block-button__link {
+      display: inline-block;
+      background: $blue;
+      color: white;
+      font-weight: bold;
+      // slightly more padding to make up for lack of border
+      padding: 13px 28px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      text-decoration: none;
+      cursor: pointer;
+      &:hover {
+        background: darken($blue, 10);
+      }
+      &:focus {
+        outline: none;
         box-shadow: 0px 0px 0px 3px $focus;
+      }
     }
+  }
 
+  & > * {
+    margin-top: 0px !important;
+  }
+}
 
-    a{
-        font-size: 1.15rem;
-        font-weight: bold;
-        &:focus{
-            color: $blue;
-            outline: none;
-            background: none;
-        }
-        &:active{
-            color: $blue;
-        }
-        &:after{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: block;
-            content: "";
-        }
+.layout-sidebar-right__sidebar > .widget *:first-child {
+  margin-top: 0px;
+}
+
+.widget {
+  margin-bottom: 35px;
+}
+
+.child-tiles {
+  list-style: none;
+  padding-left: 0px;
+  margin-bottom: 40px;
+  @media screen and (min-width: 700px) {
+    margin-bottom: 45px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
+  }
+}
+
+.child-tile {
+  position: relative;
+  // background: $pale;
+  background: transparentize($blue, 0.9);
+  border-radius: 5px;
+  padding: 25px;
+  margin-bottom: 25px;
+  @media screen and (min-width: 700px) {
+    @supports (display: grid) {
+      margin-bottom: 0px;
     }
+  }
+
+  &:focus-within {
+    box-shadow: 0px 0px 0px 3px $focus;
+  }
+
+  a {
+    font-size: 1.15rem;
+    font-weight: bold;
+    &:focus {
+      color: $blue;
+      outline: none;
+      background: none;
+    }
+    &:active {
+      color: $blue;
+    }
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      content: "";
+    }
+  }
 }

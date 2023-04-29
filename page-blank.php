@@ -1,21 +1,29 @@
 <?php 
-/* Template Name: Blank */
+/**
+ * Template for with no sidebar or feedback
+ *
+ *
+ * @package ws
+ * Template Name: Blank
+ */
 ?>
 
 <?php get_header(); ?>
 
-<?php if(have_posts()): while(have_posts()): the_post(); ?>
+<?php if(have_posts()) : ?> 
+    <?php while(have_posts()): ?>
+        <?php the_post(); ?>
 
-<div class="content-wrapper">
-    <div class="container">
-        <?php the_breadcrumbs(); ?>
-        <h1 class="page-title"><?php the_title(); ?></h1>
-        <article class="content-area">
-            <?php the_content(); ?>
-        </article>
-    </div>
-</div>
+        <div class="content-wrapper">
+            <div class="container">
+                <?php get_template_part( 'template-parts/breadcrumbs', null ); ?>
+                <?php get_template_part( 'template-parts/content', null, array('full_width' => true) ); ?>
+            </div>
+        </div>
 
-<?php endwhile; endif; ?>
+    <?php endwhile; ?>
+<?php endif; ?>
+
+
 
 <?php get_footer(); ?>

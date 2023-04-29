@@ -1,171 +1,112 @@
 <?php
 
-require "inc/customizer.php";
-require "inc/pinboard.php";
-require "inc/feedback.php";
-
-function lo_load_scripts_and_styles() {
-    wp_enqueue_style("styles", get_stylesheet_directory_uri()."/dist/css/index.css");
-    wp_enqueue_style("fonts", "https://fonts.googleapis.com/css?family=Lato:400,500,600,700");
-    
-    wp_enqueue_script("app", get_stylesheet_directory_uri()."/dist/js/index.js");
-}
-add_action("wp_enqueue_scripts", "lo_load_scripts_and_styles");
-
-function lo_register_menus() {
-    register_nav_menus(
-        array(
-            "header-menu" => __( "Header area" ),
-            "footer-menu" => __( "Footer area" ),
-            "trails-menu" => __( "Home page trails" )
-        )
-    );
-}
-add_action( "init", "lo_register_menus" );
-
-function lo_widgets_init() {
-	register_sidebar( array(
-		'name'          => 'Post sidebar',
-		'id'            => 'post_sidebar',
-		'before_widget' => '<div class="widget">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h2>',
-		'after_title'   => '</h2>',
-    ));
-    register_sidebar( array(
-		'name'          => 'Page sidebar',
-		'id'            => 'page_sidebar',
-		'before_widget' => '<div class="widget">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h2>',
-		'after_title'   => '</h2>',
-	));
-}
-add_action( 'widgets_init', 'lo_widgets_init' );
-
-add_theme_support( 'custom-logo' );
-add_theme_support( 'post-thumbnails' ); 
+define("COOKIE_KEY", "my_pins");
+define("FEEDBACK_KEY", "my_feedback");
+define("WS_ACF_GROUP_SIDEBAR", "group_5f0f084933f37");
+define("WS_ACF_GROUP_DESIGN", "group_5f19cb1616e64");
 
 
-add_post_type_support( 'page', 'excerpt' );
+
+require get_template_directory() . "/inc/helpers.php";
+require get_template_directory() . "/inc/dependencies.php";
+require get_template_directory() . "/inc/plugins/plugins.php";
+require get_template_directory() . "/inc/theme/theme.php";
+require get_template_directory() . "/inc/custom_logo/custom_logo.php";
+require get_template_directory() . "/inc/beta_banner/beta_banner.php";
+require get_template_directory() . "/inc/announcement/announcement.php";
+require get_template_directory() . "/inc/homepage_blocks/homepage_blocks.php";
+require get_template_directory() . "/inc/hero/hero.php";
+require get_template_directory() . "/inc/campaign/campaign.php";
+require get_template_directory() . "/inc/popular_topics/popular_topics.php";
+require get_template_directory() . "/inc/header/header.php";
+require get_template_directory() . "/inc/footer/footer.php";
+require get_template_directory() . "/inc/styles-scripts.php";
+require get_template_directory() . "/inc/template-tags.php";
+require get_template_directory() . "/inc/pingback.php";
+require get_template_directory() . "/inc/excerpts/excerpts.php"; 
+require get_template_directory() . "/inc/post_type_page/post_type_page.php";
+require get_template_directory() . "/inc/post_type_post/post_type_post.php";
+require get_template_directory() . "/inc/pins/pins.php";
+require get_template_directory() . "/inc/feedback/feedback.php";
+require get_template_directory() . "/inc/related/related.php";
+require get_template_directory() . "/inc/downloads/downloads.php";
 
 
-function lo_custom_excerpt_length( $length ) {
-    return 20;
-}
-add_filter( 'excerpt_length', 'lo_custom_excerpt_length', 999 );
 
-function lo_excerpt_more($more) {
-    return '...';
-}
-add_filter('excerpt_more', 'lo_excerpt_more');
-
-function the_breadcrumbs($post_id = null){
-    if($post_id){
-        $post = get_post($post_id);
-    } else {
-        global $post;
-    }
-    if(is_page()){
-        $parent_id = $post->post_parent;
-        $breadcrumbs = array();
-        while ($parent_id) {
-            $page = get_page($parent_id);
-            $breadcrumbs[] = "<li class='breadcrumbs__crumb'><a href='" . get_permalink($page->ID) . "'>" . get_the_title($page->ID) . "</a></li>";
-            $parent_id = $page->post_parent;
-        }
-        $breadcrumbs = array_reverse($breadcrumbs);
-        echo "<ol class='breadcrumbs'>";
-        echo "<li class='breadcrumbs__crumb'><a href='" . get_option("home") . "'>Home</a></li>";
-        foreach ($breadcrumbs as $crumb) echo $crumb;
-        echo "<li class='breadcrumbs__crumb'>" . get_the_title($post) . "</li>";
-        echo "</ol>";
-    }
-}
-
-function the_children(){
-    global $post;
-    $children = new WP_Query(array(
-        'post_type'      => 'page',
-        'post_status' => 'publish',
-        'posts_per_page' => -1,
-        'post_parent'    => $post->ID,
-        'order'          => 'ASC',
-        'orderby'        => 'menu_order'
-    ));
-    if ( $children->have_posts() ):
-        echo "<div class='widget'>";
-        echo "<h2>Pages in this section</h2>";
-        echo "<ul class='child-page-list'>";
-        while ( $children->have_posts() ) : $children->the_post();
-            echo "<li>";
-            echo "<a href='" . get_the_permalink() . "'>" . get_the_title() . "</a>";
-            echo "</li>";
-        endwhile;
-        echo "</ul>";
-        echo "</div>";
-    endif; 
-    wp_reset_postdata();
-}
-
-function the_related_pages(){
-    global $post;
-    $related = get_field('related');
-    if ( $related ):
-        echo "<div class='widget'>";
-        echo "<h2>Related pages</h2>";
-        echo "<ul class='child-page-list'>";
-        foreach($related as $post):
-            echo "<li>";
-            echo "<a href='" . get_the_permalink($post) . "'>" . get_the_title($post) . "</a>";
-            echo "</li>";
-        endforeach;
-        echo "</ul>";
-        echo "</div>";
-    endif;
-    wp_reset_postdata();
-}
-
-function the_downloads(){
-    global $post;
-    $downloads = get_field('downloads');
-    if( $downloads ):
-        echo "<div class='widget'><h2>Downloads</h2><ul class='download-list'>";
-        foreach( $downloads as $download ):
-            echo "<li class='download'>";
-            echo "<a href='". $download->guid . "'>";
-            if( $download->post_title ) { 
-                echo $download->post_title; 
-            } else { 
-                echo $download->post_name; 
-            }
-            echo "</a>";
-            echo "<p>" . $download->post_content . "</p>";
-            echo "<small>" . date_format(date_create($download->post_date), "F Y") . "</small>";
-            echo "</li>";
-        endforeach;
-        echo "</ul></div>";
-    wp_reset_postdata();
-    endif;
-}
-
-function trails_nav_add_descriptions( $item_output, $item, $depth, $args ) {
-    if (is_front_page() && !empty( $item->description ) ) {
-        $item_output = str_replace( 
-            $item->title . "</a>",
-            $item->title . "</a><p>" . $item->description . "</p>",
-            $item_output 
-        );
-    }
-    return $item_output;
-}
-add_filter( 'walker_nav_menu_start_el', 'trails_nav_add_descriptions', 10, 4 );
+// plugins
+add_action('acf/init', 'ws_acf_create_theme_field_groups'); //make groups
 
 
-function colour_scheme(){
-    global $post;
-    if(get_field("colour_scheme")){
-        return "colour-scheme-" . get_field("colour_scheme");
-    }
-    return null;
-}
+// custom logo
+add_action( 'after_setup_theme', 'ws_custom_logo' );
+
+// beta banner
+add_action( 'customize_register', 'ws_beta_banner_options' );
+
+// announcement
+add_action( 'customize_register', 'ws_announcement_options' );
+
+// homepage_blocks
+add_action( 'customize_register', 'ws_homepage_blocks_options' );
+
+// hero
+add_action( 'customize_register', 'ws_hero_options' );
+
+// campaign
+add_action( 'customize_register', 'ws_campaign_options' );
+
+
+// popular_topics
+add_action( 'after_setup_theme', 'ws_popular_topics_menu' );
+add_filter( 'walker_nav_menu_start_el', 'ws_popular_topics_menu_walker', 10, 4 );
+add_filter( 'manage_nav-menus_columns', 'ws_popular_topics_menu_enable_description' );
+
+// header
+add_action( 'after_setup_theme', 'ws_header_menu' );
+add_filter( 'wp_nav_menu_objects', 'ws_header_menu_limit', 10, 2 );
+
+// footer
+add_action( 'after_setup_theme', 'ws_footer_menu' );
+add_filter( 'wp_nav_menu_objects', 'ws_footer_menu_limit', 10, 2 );
+
+// styles scripts
+add_action( 'wp_enqueue_scripts', 'ws_styles_scripts' );
+
+
+// pingback
+add_action( 'wp_head', 'ws_pingback_header' );
+
+// excerpts
+add_filter('excerpt_more', 'ws_excerpts_more');
+add_filter( 'excerpt_length', 'ws_excerpts_custom_length', 999 );
+
+
+// post types - pages
+add_action( 'after_setup_theme', 'ws_post_type_page_excerpts' );
+add_action( 'widgets_init', 'ws_post_type_page_sidebar' );
+
+
+// post types - posts
+add_action( 'widgets_init', 'ws_post_type_post_sidebar' );
+
+
+// pins
+add_action( "admin_post_nopriv_pinning", "ws_pins_handle_pinning" );
+add_action( "admin_post_pinning", "ws_pins_handle_pinning" );
+
+// feedback
+add_action( 'add_meta_boxes', 'ws_feedback_add_meta' ); 
+add_action( "admin_post_nopriv_feedback", "ws_feedback_handle_feedback" );
+add_action( "admin_post_feedback", "ws_feedback_handle_feedback" );
+
+// related
+add_action('acf/init', 'ws_related_acf_create_fields'); 
+
+// downloads
+add_action('acf/init', 'ws_downloads_acf_create_fields'); 
+
+// colour_scheme
+add_action('acf/init', 'ws_colour_scheme_acf_create_fields'); 
+
+
+
