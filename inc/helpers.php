@@ -8,7 +8,7 @@ function ws_which_template_is_loaded() {
 	}
 }
 endif;
-add_action( 'wp_head', 'ws_which_template_is_loaded' );
+// add_action( 'wp_head', 'ws_which_template_is_loaded' );
 
 
 
