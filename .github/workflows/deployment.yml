@@ -27,7 +27,7 @@ jobs:
 
       - name: Sync
         env:
-          dest: "bitnami@{{secrets.DEPLOY_DEST}}:/home/bitnami/stack/wordpress/wp-content/themes/west-sussex-local-offer"
+          dest: "bitnami@${{secrets.DEPLOY_DEST}}:/home/bitnami/stack/wordpress/wp-content/themes/west-sussex-local-offer"
         run: |
           echo "${{secrets.DEPLOY_KEY}}" > deploy_key
           chmod 600 ./deploy_key
