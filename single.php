@@ -1,4 +1,16 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying all single posts
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ * @package west-sussex-local-offer
+ */
+
+get_header();
+?>
+
+
 
 <?php if(have_posts()): while(have_posts()): the_post(); ?>
 
@@ -38,15 +50,15 @@
 
             </article>
 
-            <aside class="layout-sidebar-right__sidebar">
-                <?php if ( is_active_sidebar( "post_sidebar" ) ) : ?>
-                    <?php dynamic_sidebar( "post_sidebar" ); ?>
-                <?php endif; ?>
-            </aside>
+
+            <?php get_sidebar(); ?>
+
+            
         </div>
     </div>
 </div>
 
 <?php endwhile; endif; ?>
 
-<?php get_footer(); ?>
+<?php
+get_footer();

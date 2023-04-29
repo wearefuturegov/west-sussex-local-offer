@@ -1,46 +1,30 @@
 <?php 
-/* Template Name: Index/Tiled */
-get_header(); 
+/**
+ * Template for testing page templates
+ *
+ *
+ * @package ws
+ * Template Name: Index/Tiled
+ */
 ?>
 
-<?php if(have_posts()): while(have_posts()): the_post(); ?>
 
-<div class="content-wrapper">
-    <div class="container">
-        <?php the_breadcrumbs(); ?>
-        <h1 class="page-title"><?php the_title(); ?></h1>
+<?php get_header(); ?>
 
-        <div class="layout-sidebar-right">
-            <div class="layout-sidebar-right__main-content">
-                <article class="content-area">
-                    <?php the_content(); ?>
-                </article>
+
+<?php if(have_posts()) : ?> 
+    <?php while(have_posts()): ?>
+        <?php the_post(); ?>
+
+        <div class="content-wrapper">
+            <div class="container">
+                <?php get_template_part( 'template-parts/breadcrumbs', null ); ?>
+                <?php get_template_part( 'template-parts/content', null, array('hide_sidebar' => true) ); ?>
+                <?php get_template_part( 'template-parts/page-index-boxes', null ); ?>
             </div>
         </div>
 
-        <?php 
-        $children = new WP_Query(array(
-            'post_type'      => 'page',
-            'post_status' => 'publish',
-            'posts_per_page' => -1,
-            'post_parent'    => $post->ID,
-            'order'          => 'ASC',
-            'orderby'        => 'menu_order'
-        ));
-        if ( $children->have_posts() ):
-            echo "<ul class='child-tiles'>";
-            while ( $children->have_posts() ) : $children->the_post();
-                echo "<li class='child-tile'>";
-                echo "<a href='" . get_the_permalink() . "'>" . get_the_title() . "</a>";
-                the_excerpt();
-                echo "</li>";
-            endwhile;
-            echo "</ul>";
-        endif; wp_reset_postdata();
-        ?>
-    </div>
-</div>
-
-<?php endwhile; endif; ?>
+    <?php endwhile; ?>
+<?php endif; ?>
 
 <?php get_footer(); ?>
